@@ -1,0 +1,1191 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\data\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\data\\applicationcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715144447_test16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715144447_test16.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\applicationcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\applicationcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\booktranslator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\booktranslator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\translator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\translator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715135844_test15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715135844_test15.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\book.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\authorbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\authorbook.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\bookcopyroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\bookcopyroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\bookcopy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\bookcopy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookroomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookroomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\bookroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\bookroom.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715134742_test14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715134742_test14.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\library.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\library.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\booklibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\booklibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\booklibrariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\booklibrariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715134019_test13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715134019_test13.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\bookdonor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\bookdonor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookdonorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookdonorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715130636_test12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715130636_test12.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715124144_test11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715124144_test11.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240715060638_test10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240715060638_test10.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240714202303_test9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240714202303_test9.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240714143125_test7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240714143125_test7.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240712202425_test4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240712202425_test4.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\authorbookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\authorbookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\assetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\assetscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookcopyroomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookcopyroomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\subcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\publisher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\donor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\language.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\bookcopylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\bookcopylibrary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\author.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\asset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\asset.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\authorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\rolescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240705094632_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240705094632_initial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240708105549_bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240708105549_bookauthor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240708081458_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240708081458_test.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240709123510_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240709123510_person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240712121423_test2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240712121423_test2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\booksubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\booksubcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\booklanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\booklanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookcopylibrariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookcopylibrariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\booklanguagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\booklanguagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\booksubcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\booksubcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\bookcopiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\bookcopiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\translatorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\translatorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\subcategoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\roomscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\publisherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\memberscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\librariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\librariescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\languagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\languagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\donorscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\controllers\\categoriescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240714144311_test8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240714144311_test8.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240714113135_test6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240714113135_test6.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240714101340_test5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240714101340_test5.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\models\\person.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|d:\\yedek\\softito backend e\u011Fitimi\\y\u00FCzy\u00FCze dersler\\softito\\libraryapi\\libraryapi\\migrations\\20240712124116_test3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8BFB030D-FA6D-46B1-8044-4999906393F5}|LibraryAPI\\LibraryAPI.csproj|solutionrelative:libraryapi\\migrations\\20240712124116_test3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ApplicationContext.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Data\\ApplicationContext.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Data\\ApplicationContext.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Data\\ApplicationContext.cs",
+              "RelativeToolTip": "LibraryAPI\\Data\\ApplicationContext.cs",
+              "ViewState": "AQIAAKUAAAAAAAAAAAAqwLYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:13:13.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "BookTranslator.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookTranslator.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookTranslator.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookTranslator.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookTranslator.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAxwBEAAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T15:01:06.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ApplicationContextModelSnapshot.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\ApplicationContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\ApplicationContextModelSnapshot.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\ApplicationContextModelSnapshot.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\ApplicationContextModelSnapshot.cs",
+              "ViewState": "AQIAAKYCAAAAAAAAAADwv0wFAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:23:30.336Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20240715144447_Test16.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715144447_Test16.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715144447_Test16.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715144447_Test16.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715144447_Test16.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwEcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T14:44:51.081Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Translator.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Translator.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Translator.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Translator.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Translator.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAcwCEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T11:03:45.511Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "20240715135844_Test15.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715135844_Test15.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715135844_Test15.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715135844_Test15.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715135844_Test15.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:58:45.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Book.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Book.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Book.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Book.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Book.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAiwHAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:03:57.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AuthorBook.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\AuthorBook.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\AuthorBook.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\AuthorBook.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\AuthorBook.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAxwBMAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:02:59.853Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "BookCopyRoom.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopyRoom.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookCopyRoom.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopyRoom.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookCopyRoom.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T12:27:15.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BookCopy.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopy.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookCopy.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopy.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookCopy.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAA9wDMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:02:40.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "BookRoomsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookRoomsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookRoomsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookRoomsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookRoomsController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T14:51:59.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BookRoom.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookRoom.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookRoom.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookRoom.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookRoom.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T14:33:54.749Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Room.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Room.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Room.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Room.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAQwBYAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:03:33.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "20240715134742_Test14.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715134742_Test14.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715134742_Test14.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715134742_Test14.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715134742_Test14.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:47:45.056Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Library.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Library.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Library.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Library.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Library.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAwwBoAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T13:55:30.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "BookLibrary.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookLibrary.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookLibrary.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookLibrary.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookLibrary.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABAAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:49:53.917Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Location.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Location.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Location.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Location.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Location.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:02:46.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "BookLibrariesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookLibrariesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookLibrariesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookLibrariesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookLibrariesController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T14:01:38.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "20240715134019_Test13.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715134019_Test13.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715134019_Test13.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715134019_Test13.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715134019_Test13.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:40:26.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "BookDonorsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookDonorsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookDonorsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookDonorsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookDonorsController.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:48:31.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "BookDonor.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookDonor.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookDonor.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookDonor.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookDonor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T12:49:59.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "20240715130636_Test12.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715130636_Test12.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715130636_Test12.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715130636_Test12.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715130636_Test12.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:06:38.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "20240715124144_Test11.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715124144_Test11.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715124144_Test11.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715124144_Test11.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715124144_Test11.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T12:41:49.283Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "20240715060638_Test10.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715060638_Test10.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240715060638_Test10.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240715060638_Test10.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240715060638_Test10.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAArAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T06:06:41.099Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "20240714202303_Test9.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714202303_Test9.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240714202303_Test9.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714202303_Test9.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240714202303_Test9.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T20:24:05.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "20240714143125_Test7.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714143125_Test7.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240714143125_Test7.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714143125_Test7.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240714143125_Test7.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAA+wAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:40:14.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "20240712202425_Test4.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712202425_Test4.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240712202425_Test4.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712202425_Test4.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240712202425_Test4.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:24:32.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "AuthorBooksController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AuthorBooksController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\AuthorBooksController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AuthorBooksController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\AuthorBooksController.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:34:05.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "AssetsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AssetsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\AssetsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AssetsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\AssetsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:32:07.019Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "BookCopyRoomsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopyRoomsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookCopyRoomsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopyRoomsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookCopyRoomsController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:37:48.919Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "BooksController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BooksController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BooksController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BooksController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BooksController.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAkwFwAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:33.677Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "BookCopyLibrary.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopyLibrary.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookCopyLibrary.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookCopyLibrary.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookCopyLibrary.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T20:25:55.774Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Language.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Language.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Language.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Language.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Language.cs",
+              "ViewState": "AQIAAAUAAAAAAAAAAAAmwBIAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:56:24.502Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Donor.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Donor.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Donor.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Donor.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Donor.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAA1wB4AAAAyAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:56:07.59Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Publisher.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Publisher.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Publisher.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Publisher.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Publisher.cs",
+              "ViewState": "AQIAABQAAAAAAAAAAAAkwB0AAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T19:56:18.346Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "SubCategory.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\SubCategory.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\SubCategory.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\SubCategory.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\SubCategory.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAswBUAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T11:07:41.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Author.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Author.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Author.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Author.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Author.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwBcAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:02:49.014Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "Asset.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Asset.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Asset.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Asset.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Asset.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAgwA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:14:03.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "AuthorsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AuthorsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\AuthorsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\AuthorsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\AuthorsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGoAAAA+AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:34:04.692Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "RolesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\RolesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\RolesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\RolesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\RolesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:41:11.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "20240705094632_Initial.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240705094632_Initial.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240705094632_Initial.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240705094632_Initial.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240705094632_Initial.cs",
+              "ViewState": "AQIAAHwAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:13:44.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "20240708105549_bookauthor.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240708105549_bookauthor.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240708105549_bookauthor.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240708105549_bookauthor.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240708105549_bookauthor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:13:42.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "20240708081458_Test.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240708081458_Test.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240708081458_Test.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240708081458_Test.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240708081458_Test.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:13:41.422Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "20240709123510_Person.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240709123510_Person.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240709123510_Person.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240709123510_Person.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240709123510_Person.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T13:13:39.727Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "20240712121423_Test2.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712121423_Test2.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240712121423_Test2.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712121423_Test2.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240712121423_Test2.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:31:30.966Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "BookSubCategory.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookSubCategory.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookSubCategory.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookSubCategory.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookSubCategory.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T09:18:28.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "LibraryAPI\\appsettings.json",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\appsettings.json",
+              "RelativeToolTip": "LibraryAPI\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-07-13T19:59:42.516Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "BookLanguage.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookLanguage.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\BookLanguage.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\BookLanguage.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\BookLanguage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:17:36.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "BookCopyLibrariesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopyLibrariesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookCopyLibrariesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopyLibrariesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookCopyLibrariesController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T06:16:13.639Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "BookLanguagesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookLanguagesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookLanguagesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookLanguagesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookLanguagesController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T06:11:33.838Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "BookSubCategoriesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookSubCategoriesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookSubCategoriesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookSubCategoriesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookSubCategoriesController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:56:41.434Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "BookCopiesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopiesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\BookCopiesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\BookCopiesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\BookCopiesController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T10:14:42.812Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "TranslatorsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\TranslatorsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\TranslatorsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\TranslatorsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\TranslatorsController.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T11:33:03.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "SubCategoriesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\SubCategoriesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\SubCategoriesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\SubCategoriesController.cs",
+              "ViewState": "AQIAABMAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:41:18.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "MembersController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\MembersController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\MembersController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\MembersController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\MembersController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:52.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "LocationsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LocationsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\LocationsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LocationsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\LocationsController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:49.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "LibrariesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LibrariesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\LibrariesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LibrariesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\LibrariesController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:36:56.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "LanguagesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LanguagesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\LanguagesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\LanguagesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\LanguagesController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:45.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "EmployeesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\EmployeesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\EmployeesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\EmployeesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\EmployeesController.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-15T05:40:51.036Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "RoomsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\RoomsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\RoomsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\RoomsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\RoomsController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAAwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:37:51.772Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "CategoriesController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\CategoriesController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\CategoriesController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\CategoriesController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\CategoriesController.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAkwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:43.015Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "PublishersController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\PublishersController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\PublishersController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\PublishersController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\PublishersController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:50.918Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "DonorsController.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\DonorsController.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Controllers\\DonorsController.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Controllers\\DonorsController.cs",
+              "RelativeToolTip": "LibraryAPI\\Controllers\\DonorsController.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAYwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T20:22:44.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "20240714144311_Test8.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714144311_Test8.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240714144311_Test8.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714144311_Test8.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240714144311_Test8.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T14:43:43.821Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Category.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Category.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Category.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Category.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Category.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:02:54.738Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "20240714101340_Test5.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714101340_Test5.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240714101340_Test5.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714101340_Test5.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240714101340_Test5.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T11:22:47.117Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "20240714113135_Test6.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714113135_Test6.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240714113135_Test6.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240714113135_Test6.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240714113135_Test6.cs",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T11:31:38.116Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "Person.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Person.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Models\\Person.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Models\\Person.cs",
+              "RelativeToolTip": "LibraryAPI\\Models\\Person.cs",
+              "ViewState": "AQIAACoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-14T09:21:41.638Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Program.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Program.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Program.cs",
+              "RelativeToolTip": "LibraryAPI\\Program.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-13T19:59:47.045Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "20240712124116_Test3.cs",
+              "DocumentMoniker": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712124116_Test3.cs",
+              "RelativeDocumentMoniker": "LibraryAPI\\Migrations\\20240712124116_Test3.cs",
+              "ToolTip": "D:\\Yedek\\SoftIto Backend E\u011Fitimi\\Y\u00FCzy\u00FCze Dersler\\SoftITO\\LibraryAPI\\LibraryAPI\\Migrations\\20240712124116_Test3.cs",
+              "RelativeToolTip": "LibraryAPI\\Migrations\\20240712124116_Test3.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-12T20:31:29.991Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
