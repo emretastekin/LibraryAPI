@@ -13,6 +13,8 @@ namespace LibraryAPI.Models
 		[StringLength(800)]
         public string Name { get; set; } = "";
 
+		public int DonorId1 { get; set; }
+
 		[Phone]
 		[StringLength(15,MinimumLength =7)]
 		[Column(TypeName ="varchar(15)")]
@@ -28,7 +30,20 @@ namespace LibraryAPI.Models
 		[JsonIgnore]
 		public List<Book>? Books { get; set; }
 
+		[JsonIgnore]
 		public List<BookDonor>? BookDonors { get; set; }
+
+		[JsonIgnore]
+		public List<BookCopy>? BorrowedBooks { get; set; }
+
+		[JsonIgnore]
+		public List<BookCopy>? DeliveredBooks { get; set; }
+
+		[JsonIgnore]
+        public BookCopy? BookCopy { get; set; }
+
+		[JsonIgnore]
+		public List<Rating>? Ratings { get; set; }
 
 
 

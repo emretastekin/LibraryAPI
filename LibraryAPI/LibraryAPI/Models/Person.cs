@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Identity;
 
 namespace LibraryAPI.Models
@@ -37,6 +38,23 @@ namespace LibraryAPI.Models
 
         public byte BorrowedDayLimit { get; set; }
 
+        [StringLength(500)]
+        public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
+
+        [JsonIgnore]
+        public List<BookCopy>? BorrowedBooks { get; set; }  //Üyenin kiraladığı kitap kopyaları
+
+        [JsonIgnore]
+        public List<BookCopy>? DeliveredBooks { get; set; }  // Employee'nin teslim ettiği kitapların kopyaları
+
+        [JsonIgnore]
+        public List<FavoriteBook>? FavoriteBooks { get; set; }
+
+        [JsonIgnore]
+        public List<Penalty>? Penalties { get; set; }
+
+        [JsonIgnore]
+        public List<Rating>? Ratings { get; set; }
 
     }
 
@@ -55,6 +73,28 @@ namespace LibraryAPI.Models
         public float Salary { get; set; }
         public string Department { get; set; } = "";
         public string? Shift { get; set; }
+
+        [StringLength(500)]
+        public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
+
+        [JsonIgnore]
+        public List<BookCopy>? BorrowedBooks { get; set; }  //Employee'nin kiraladığı kitaplar
+
+        [JsonIgnore]
+        public List<BookCopy>? DeliveredBooks { get; set; }  // Employee'nin teslim ettiği kitapların kopyaları
+
+        [JsonIgnore]
+        public List<FavoriteBook>? FavoriteBooks { get; set; }
+
+        [JsonIgnore]
+        public List<Penalty>? Penalties { get; set; }
+
+        [JsonIgnore]
+        public List<Rating>? Ratings { get; set; }
+
+
+
+        
 
     }
 }

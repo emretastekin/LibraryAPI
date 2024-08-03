@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Hosting;
 using System.Security.Claims;
+using System.Diagnostics.Metrics;
 
 namespace LibraryAPI.Controllers
 {
@@ -120,6 +121,8 @@ namespace LibraryAPI.Controllers
           }
             _userManager.CreateAsync(employee.ApplicationUser!,employee.ApplicationUser!.Password).Wait();
             _userManager.AddToRoleAsync(employee.ApplicationUser!, "Worker").Wait();
+            
+
             if (category != null)
             {
                 claim = new Claim("Category", category);
@@ -137,7 +140,7 @@ namespace LibraryAPI.Controllers
             _context.Employees.Add(employee);  //Employeenin içine sadece employee'nin özelliklerini yazar.
             try
             {
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();   
             }
             catch (DbUpdateException)
             {
@@ -153,6 +156,48 @@ namespace LibraryAPI.Controllers
 
             return CreatedAtAction("GetEmployee", new { id = employee.Id }, employee);
         }
+
+        [HttpPost("upload-cover-image/{employeeId}")]
+        public async Task<IActionResult> UploadCoverImage(string employeeId, IFormFile coverImage)
+        {
+            if (coverImage == null || coverImage.Length == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            // Kitabı bul
+            var employee = await _context.Employees.FindAsync(employeeId);
+            if (employee == null)
+            {
+                return NotFound("Employee not found.");
+            }
+
+            // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var fileName = coverImage.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+            // Dosyayı kaydedin
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await coverImage.CopyToAsync(stream);
+            }
+
+            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            employee.CoverImageUrl = $"/images/{fileName}";
+
+            // Kitap nesnesini güncelleyin
+            _context.Entry(employee).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            // Dosyayı okuyup yanıt olarak döndürün
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            return File(fileBytes, "image/jpeg");
+
+        }
+
+
+
+
 
         // DELETE: api/Employees/5
         [HttpDelete("{id}")]
@@ -174,70 +219,136 @@ namespace LibraryAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("Login")]
-        public ActionResult Login(string userName,string password)
-        {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
-            Microsoft.AspNetCore.Identity.SignInResult signInResult;
+       
 
-            if( applicationUser != null)  //Kullanıcı kayıtlı olup olmadığını kontrol ediyor.
+        [HttpPost("BorrowBook/{employeeId}/{bookCopyId}")]
+        public async Task<IActionResult> BorrowBook(string employeeId,int bookCopyId)
+        {
+            var employee = await _context.Employees.Include(m => m.BorrowedBooks).FirstOrDefaultAsync(m => m.Id == employeeId);
+
+            if (employee == null)
             {
-                signInResult = _signInManager.PasswordSignInAsync(applicationUser, password, false, false).Result;
-                if (signInResult.Succeeded == true)
+                return NotFound("Employee Not Found");
+            }
+
+            var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
+
+            if (bookCopy == null || !bookCopy.IsAvailable)
+            {
+                return NotFound("Book copy not available");
+            }
+
+            if(employee.BorrowedBooks!=null && employee.BorrowedBooks.Count >= 5)
+            {
+                return BadRequest("You cannot borrow more than 5 books");
+            }
+
+            employee.BorrowedBooks.Add(bookCopy);
+            bookCopy.IsAvailable = false;
+            bookCopy.BorrowingEmployeeId = employeeId;
+
+            _context.Employees.Update(employee);
+            _context.BookCopies.Update(bookCopy);
+
+            await _context.SaveChangesAsync(); //Veri tabanı değişikliklerini kaydetmek için kullanılır.
+
+            return Ok("Book borrowed successfully");
+
+        }
+
+        [HttpPost("DeliverBook/{employeeId}/{bookCopyId}")]
+        public async Task<IActionResult> DeliverBook(string employeeId,int bookCopyId, int ratingValue)
+        {
+            var employee = await _context.Employees.Include(m => m.BorrowedBooks).Include(m=>m.DeliveredBooks).FirstOrDefaultAsync(m => m.Id == employeeId);
+
+            if (employee == null)
+            {
+                return NotFound("Employee Not Found");
+            }
+
+            var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
+
+            if(bookCopy==null)
+            {
+                return NotFound("Book copy not avaliable");
+            }
+
+            if (bookCopy.IsAvailable)
+            {
+                return BadRequest("Book copy is already available");
+            }
+
+            if (!employee.BorrowedBooks.Contains(bookCopy))
+            {
+                return BadRequest("Book copy was not borrowed by this employee");
+            }
+
+            var rating = await _context.Ratings.FirstOrDefaultAsync(r => r.BookCopy.Id == bookCopyId);
+
+            if (rating == null)
+            {
+                // If rating for this book copy doesn't exist, create a new one
+                rating = new Rating
                 {
-                    return Ok();
+                    EmployeeId = employeeId,
+                    RatingSum = ratingValue,
+                    RatingAmount = 1,
+                    BookCopy = bookCopy
+                };
 
-                }
+                _context.Ratings.Add(rating);
             }
-            return Unauthorized();
-        }
-
-        [Authorize]   //Bu nitelik, bu yöntemin yalnızca kimlik
-                      //doğrulaması yapılmış (yani oturum açmış)
-                      //kullanıcılar tarafından erişilebilir olmasını sağlar.
-                      //Herhangi bir login işlemi yapılmadıysa 404 not found hatası gönderecektir.
-
-        [HttpGet("Logout")]
-        public ActionResult LogOut()
-        {
-            _signInManager.SignOutAsync();
-            return Ok();
-        }
-
-        [HttpPost("ForgetPassword")]
-        public ActionResult<string> ForgetPassword(string userName)
-        {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
-
-            string token= _userManager.GeneratePasswordResetTokenAsync(applicationUser).Result;
-            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage("abc@abc",applicationUser.Email,"Şifre sıfırlama",token);
-
-            //Bu kod, temel anlamda bir e - posta mesajını SMTP
-            //sunucusu aracılığıyla göndermek için kullanılan
-            //standart bir işlemi temsil eder.
-            System.Net.Mail.SmtpClient smtpClient = new System.Net.Mail.SmtpClient("http://smtp.domain.com");
-            smtpClient.Send(mailMessage);
-            return token;
-        }
-
-        [HttpPost("ResetPassword")]
-        public ActionResult ResetPassword(string userName,string newPassword)
-        {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
-            string token = _userManager.GeneratePasswordResetTokenAsync(applicationUser).Result;
-
-            try
+            else
             {
-                _userManager.ResetPasswordAsync(applicationUser, token, newPassword).Wait();
-
+                // Update existing rating
+                rating.RatingSum += ratingValue;
+                rating.RatingAmount++;
+                // Update average rating
+                rating.AverageRating = (double)rating.RatingSum / rating.RatingAmount;
+                _context.Ratings.Update(rating);
             }
-            catch
-            {
-                return Unauthorized();
-            }
 
-            return Ok();
+            employee.DeliveredBooks.Add(bookCopy);
+            employee.BorrowedBooks.Remove(bookCopy);
+            bookCopy.IsAvailable = true;
+            bookCopy.DeliveringEmployeeId = employeeId;
+
+            _context.Employees.Update(employee);
+            _context.BookCopies.Update(bookCopy);
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Book delivered successfully");
         }
+
+        [HttpGet("BorrowedBookList/{employeeId}")]
+        public async Task<IActionResult> BorrowedBookList(string employeeId)
+        {
+            // Üyeyi ve kiraladığı kitapları yükle
+            var employee = await _context.Employees
+                .Include(m => m.BorrowedBooks)
+                .ThenInclude(b => b.Book)  //// Kitap bilgilerini de yükleyin
+                .FirstOrDefaultAsync(m => m.Id == employeeId);
+
+            if (employee == null)
+            {
+                return NotFound("Employee not found");
+            }
+
+            var borrowedBooks = employee.BorrowedBooks.Select(b => new
+            {
+                b.Book.Id,
+                b.Book.Title,
+                BorrowDate = b.BorrowDate?.ToString(),
+                LocationShelf = b.LocationShelf?.ToString()
+            }).ToList();
+
+            return Ok(borrowedBooks);
+        }
+
+
+
+
 
         private bool EmployeeExists(string id)
         {

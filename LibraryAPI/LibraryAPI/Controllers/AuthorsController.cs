@@ -8,21 +8,29 @@ using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using LibraryAPI.Services;
 
 namespace LibraryAPI.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
+    //[Authorize(Roles ="Employee")]  //En tepeye yerleştirdiğimiz yetkilendirme işlemi bu controller içindeki tüm işlemleri yapabilir.
     public class AuthorsController : ControllerBase
     {
+        
         private readonly ApplicationContext _context;
+        private readonly AuthorService _authorService;
 
-        public AuthorsController(ApplicationContext context)
+
+        public AuthorsController(ApplicationContext context, AuthorService authorService)
         {
             _context = context;
+            _authorService = authorService;
         }
 
         // GET: api/Authors
+        [Authorize(Roles ="Member,Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
@@ -37,18 +45,19 @@ namespace LibraryAPI.Controllers
         [HttpGet("{id}")]
         public ActionResult<Author> GetAuthor(long id)
         {
-          if (_context.Authors == null)
-          {
-              return NotFound();
-          }
-            var author =  _context.Authors.Find(id);
+
+            var author= _authorService.GetAuthorById(id);
 
             if (author == null)
             {
                 return NotFound();
-            }
 
-            return author;
+
+            }
+            return Ok(author);
+
+
+
         }
 
         // PUT: api/Authors/5
@@ -84,14 +93,16 @@ namespace LibraryAPI.Controllers
 
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Authorize(Roles ="Worker,Member")]
+        //[Authorize(Roles ="Worker,Employee")]
         [HttpPost]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
+            /*
             if (User.IsInRole("Worker") == false)
             {
                 return Unauthorized();
             }
+            */
           if (_context.Authors == null)
           {
               return Problem("Entity set 'ApplicationContext.Authors'  is null.");
@@ -102,7 +113,46 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetAuthor", new { id = author.AuthorId }, author);
         }
 
+        [HttpPost("upload-cover-image/{authorId}")]
+        public async Task<IActionResult> UploadCoverImage(long authorId, IFormFile coverImage)
+        {
+            if (coverImage == null || coverImage.Length == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            // Kitabı bul
+            var author = await _context.Authors.FindAsync(authorId);
+            if (author == null)
+            {
+                return NotFound("Author not found.");
+            }
+
+            // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var fileName = coverImage.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+            // Dosyayı kaydedin
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await coverImage.CopyToAsync(stream);
+            }
+
+            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            author.CoverImageUrl = $"/images/{fileName}";
+
+            // Kitap nesnesini güncelleyin
+            _context.Entry(author).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            // Dosyayı okuyup yanıt olarak döndürün
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            return File(fileBytes, "image/jpeg");
+
+        }
+
         // DELETE: api/Authors/5
+        [Authorize(Roles="Worker,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(long id)
         {

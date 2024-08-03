@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace LibraryAPI.Models
 {
@@ -22,10 +23,13 @@ namespace LibraryAPI.Models
 
         public DateTime? DateOfBirth { get; set; }
 
+
         public List<Book>? Books { get; set; }
 
+        [JsonIgnore]
         public List<BookCopy>? BookCopies { get; set; }
 
+        [JsonIgnore]
         public List<BookTranslator>? BookTranslators { get; set; }
 
 

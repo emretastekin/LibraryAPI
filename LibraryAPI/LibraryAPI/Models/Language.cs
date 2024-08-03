@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace LibraryAPI.Models
 {
@@ -17,8 +18,10 @@ namespace LibraryAPI.Models
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; } = "";
 
+        [JsonIgnore]
         public List<Book>? Books { get; set; }
 
+        [JsonIgnore]
         public List<BookLanguage>? BookLanguages { get; set; }
     }
 }

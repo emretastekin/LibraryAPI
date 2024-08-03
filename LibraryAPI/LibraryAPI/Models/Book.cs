@@ -54,6 +54,9 @@ namespace LibraryAPI.Models
 
         public string Situation { get; set; } = "";
 
+        [StringLength(500)]
+        public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
+
         [Required]
         [StringLength(200)]
         public string Subject { get; set; } = "";
@@ -77,36 +80,43 @@ namespace LibraryAPI.Models
         [ForeignKey(nameof(PublisherId))]
         public Publisher? Publisher { get; set; }   //Bir kitap birden fazla yayınevi tarafından çıkarabilir.Ondan dolayı List kullanmadık.Publisherların birbirinden farklı ISBN'leri vardır. Her kitap kaydının kendine özel publisherı vardır.
 
-        public List<SubCategory>? SubCategories { get; set; }
+
+        [JsonIgnore]
         public List<Language>? Languages { get; set; }
+
+        public List<SubCategory>? SubCategories { get; set; }
 
         [JsonIgnore]
         [ForeignKey(nameof(LocationShelf))]
         public Location? Location { get; set; }
 
+
+        [JsonIgnore]
         public List<Donor>? Donors { get; set; }
 
+        [JsonIgnore]
         public List<Translator>? Translators { get; set; }
 
+        [JsonIgnore]
         public List<BookLanguage>? BookLanguages { get; set; }
 
+        [JsonIgnore]
         public List<BookSubCategory>? BookSubCategories { get; set; }
 
+        [JsonIgnore]
         public List<BookCopy>? BookCopies { get; set; }
 
-        public List<Library>? Libraries { get; set; }
 
-        public List<Room>? Rooms { get; set; }
 
-        public List<Asset>? Assets { get; set; }
-
+        [JsonIgnore]
         public List<BookDonor>? BookDonors { get; set; }
 
-        public List<BookLibrary>? BookLibraries { get; set; }
 
-        public List<BookRoom>? BookRooms { get; set; }
-
+        [JsonIgnore]
         public List<BookTranslator>? BookTranslators { get; set; }
+
+
+
     }
 
 }

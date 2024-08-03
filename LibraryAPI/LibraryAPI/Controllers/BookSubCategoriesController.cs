@@ -25,22 +25,22 @@ namespace LibraryAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookSubCategory>>> GetBookSubCategories()
         {
-          if (_context.BookSubCategories == null)
+          if (_context.BookSubCategory == null)
           {
               return NotFound();
           }
-            return await _context.BookSubCategories.ToListAsync();
+            return await _context.BookSubCategory.ToListAsync();
         }
 
         // GET: api/BookSubCategories/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BookSubCategory>> GetBookSubCategory(int id)
         {
-          if (_context.BookSubCategories == null)
+          if (_context.BookSubCategory == null)
           {
               return NotFound();
           }
-            var bookSubCategory = await _context.BookSubCategories.FindAsync(id);
+            var bookSubCategory = await _context.BookSubCategory.FindAsync(id);
 
             if (bookSubCategory == null)
             {
@@ -86,11 +86,11 @@ namespace LibraryAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<BookSubCategory>> PostBookSubCategory(BookSubCategory bookSubCategory)
         {
-          if (_context.BookSubCategories == null)
+          if (_context.BookSubCategory == null)
           {
               return Problem("Entity set 'ApplicationContext.BookSubCategories'  is null.");
           }
-            _context.BookSubCategories.Add(bookSubCategory);
+            _context.BookSubCategory.Add(bookSubCategory);
             try
             {
                 await _context.SaveChangesAsync();
@@ -114,17 +114,17 @@ namespace LibraryAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookSubCategory(int id)
         {
-            if (_context.BookSubCategories == null)
+            if (_context.BookSubCategory == null)
             {
                 return NotFound();
             }
-            var bookSubCategory = await _context.BookSubCategories.FindAsync(id);
+            var bookSubCategory = await _context.BookSubCategory.FindAsync(id);
             if (bookSubCategory == null)
             {
                 return NotFound();
             }
 
-            _context.BookSubCategories.Remove(bookSubCategory);
+            _context.BookSubCategory.Remove(bookSubCategory);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -132,7 +132,7 @@ namespace LibraryAPI.Controllers
 
         private bool BookSubCategoryExists(int id)
         {
-            return (_context.BookSubCategories?.Any(e => e.BooksId == id)).GetValueOrDefault();
+            return (_context.BookSubCategory?.Any(e => e.BooksId == id)).GetValueOrDefault();
         }
     }
 }

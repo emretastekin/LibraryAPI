@@ -7,8 +7,11 @@ namespace LibraryAPI.Data
 {
     public class ApplicationContext : IdentityDbContext<ApplicationUser>  // IdentityDbContext (macte bu yeterlidir)
     {
-        public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
+        public readonly IHttpContextAccessor httpContextAccessor;
+
+        public ApplicationContext(DbContextOptions<ApplicationContext> options,IHttpContextAccessor httpContextAccessor) : base(options)
         {
+            this.httpContextAccessor = httpContextAccessor;
         }
         public DbSet<Location>? Locations { get; set; }
         public DbSet<Language>? Languages { get; set; }
@@ -21,19 +24,15 @@ namespace LibraryAPI.Data
         public DbSet<Member>? Members { get; set; }
         public DbSet<Employee>? Employees { get; set; }
         public DbSet<Donor>? Donors { get; set; }
-        public DbSet<BookLanguage>? BookLanguages { get; set; }
-        public DbSet<BookSubCategory>? BookSubCategories { get; set; }
+        public DbSet<BookLanguage>? BookLanguage { get; set; }
+        public DbSet<BookSubCategory>? BookSubCategory { get; set; }
         public DbSet<BookCopy>? BookCopies { get; set; }
-        public DbSet<Asset>? Asset { get; set; }
-        public DbSet<Room>? Room { get; set; }
-        public DbSet<Library>? Library { get; set; }
         public DbSet<Translator>? Translator { get; set; }
-        public DbSet<BookCopyLibrary>? BookCopyLibraries { get; set; }    
-        public DbSet<BookCopyRoom>? BookCopyRoom { get; set; }
         public DbSet<BookDonor>? BookDonor { get; set; }  
-        public DbSet<BookLibrary>? BookLibrary { get; set; }
-        public DbSet<BookRoom>? BookRoom { get; set; }
         public DbSet<BookTranslator>? BookTranslator { get; set; }
+        public DbSet<FavoriteBook>? FavoriteBooks { get; set; }
+        public DbSet<Penalty>? Penalties { get; set; }
+        public DbSet<Rating>? Ratings { get; set; }
 
 
 
@@ -108,34 +107,57 @@ namespace LibraryAPI.Data
                 .HasForeignKey(bc => bc.LocationShelf)
                 .OnDelete(DeleteBehavior.Restrict); // veya NoAction
 
-            // BookCopyLibrary tablosunu yapılandırma
-            modelBuilder.Entity<BookCopyLibrary>()
-                .ToTable("BookCopyLibraries")
-                .HasKey(bcl => new { bcl.BookCopiesId, bcl.LibrariesId }); // Birleşik birincil anahtar
+            modelBuilder.Entity<FavoriteBook>()
+                .ToTable("FavoriteBooks")
+                .HasKey(fb => fb.Id);
 
-            modelBuilder.Entity<BookCopyLibrary>()
-                .HasOne(bcl => bcl.BookCopy)
-                .WithMany(bc => bc.BookCopyLibraries)
-                .HasForeignKey(bcl => bcl.BookCopiesId);
+            modelBuilder.Entity<FavoriteBook>()
+                .HasOne(fb => fb.BookCopy)
+                .WithMany()
+                .HasForeignKey(fb => fb.BookCopyId)
+                .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<BookCopyLibrary>()
-                .HasOne(bcl => bcl.Library)
-                .WithMany(l => l.BookCopyLibraries)
-                .HasForeignKey(bcl => bcl.LibrariesId);
+            modelBuilder.Entity<FavoriteBook>()
+                .HasOne(fb => fb.Member)
+                .WithMany(m=>m.FavoriteBooks)
+                .HasForeignKey(fb => fb.MemberId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BookCopyRoom>()
-                .ToTable("BookCopyRooms")
-                .HasKey(bcr => new { bcr.BookCopiesId, bcr.RoomsId });
+            modelBuilder.Entity<FavoriteBook>()
+                .HasOne(fb => fb.Employee)
+                .WithMany(e=>e.FavoriteBooks)
+                .HasForeignKey(fb => fb.EmployeeId)
+                .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BookCopyRoom>()
-                .HasOne(bcr => bcr.BookCopy)
-                .WithMany(bc => bc.BookCopyRooms)
-                .HasForeignKey(bcr => bcr.BookCopiesId);
+            modelBuilder.Entity<Member>()
+               .HasMany(e => e.BorrowedBooks)
+               .WithOne(b => b.BorrowingMember)
+               .HasForeignKey(b => b.BorrowingMemberId)
+               .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<BookCopyRoom>()
-                .HasOne(bcr => bcr.Room)
-                .WithMany(r => r.BookCopyRooms)
-                .HasForeignKey(bcr => bcr.RoomsId);
+            modelBuilder.Entity<Member>()
+                .HasMany(e => e.DeliveredBooks)
+                .WithOne(b => b.DeliveringMember)
+                .HasForeignKey(b => b.DeliveringMemberId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.BorrowedBooks)
+                .WithOne(b => b.BorrowingEmployee)
+                .HasForeignKey(b => b.BorrowingEmployeeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Employee>()
+                .HasMany(e => e.DeliveredBooks)
+                .WithOne(b => b.DeliveringEmployee)
+                .HasForeignKey(b => b.DeliveringEmployeeId)
+                .OnDelete(DeleteBehavior.Restrict);
+
+
+
+
+
+
 
             modelBuilder.Entity<BookDonor>()
                 .ToTable("BookDonors")
@@ -151,36 +173,12 @@ namespace LibraryAPI.Data
                 .WithMany(d => d.BookDonors)
                 .HasForeignKey(bd => bd.DonorsId);
 
-            modelBuilder.Entity<BookLibrary>()
-                .ToTable("BookLibraries")
-                .HasKey(bl => new { bl.BooksId, bl.LibrariesId });
-
-            modelBuilder.Entity<BookLibrary>()
-                .HasOne(bl => bl.Book)
-                .WithMany(b => b.BookLibraries)
-                .HasForeignKey(bl => bl.BooksId);
-
-            modelBuilder.Entity<BookLibrary>()
-                .HasOne(bl => bl.Library)
-                .WithMany(l => l.BookLibraries)
-                .HasForeignKey(bl => bl.LibrariesId);
-
-            modelBuilder.Entity<BookRoom>()
-                .ToTable("BookRooms")
-                .HasKey(br => new { br.BooksId, br.RoomsId });
-
-            modelBuilder.Entity<BookRoom>()
-                .HasOne(br => br.Book)
-                .WithMany(b => b.BookRooms)
-                .HasForeignKey(br => br.BooksId);
-
-            modelBuilder.Entity<BookRoom>()
-                .HasOne(br => br.Room)
-                .WithMany(r => r.BookRooms)
-                .HasForeignKey(br => br.RoomsId);
 
 
-            
+
+
+
+
             modelBuilder.Entity<BookTranslator>()
                 .ToTable("BookTranslators")
                 .HasKey(bt => new { bt.BooksId, bt.TranslatorId });
@@ -194,6 +192,10 @@ namespace LibraryAPI.Data
                 .HasOne(bt => bt.Translator)
                 .WithMany(r => r.BookTranslators)
                 .HasForeignKey(bt => bt.TranslatorId);
+
+            modelBuilder.Entity<Publisher>()
+                .HasIndex(b => b.Phone)
+                .IsUnique();
 
 
             base.OnModelCreating(modelBuilder);

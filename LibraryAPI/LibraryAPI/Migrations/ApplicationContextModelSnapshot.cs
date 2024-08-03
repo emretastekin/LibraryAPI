@@ -22,36 +22,6 @@ namespace LibraryAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("BookCopyLibrary", b =>
-                {
-                    b.Property<int>("BookCopiesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LibrariesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookCopiesId", "LibrariesId");
-
-                    b.HasIndex("LibrariesId");
-
-                    b.ToTable("BookCopyLibrary");
-                });
-
-            modelBuilder.Entity("BookCopyRoom", b =>
-                {
-                    b.Property<int>("BookCopiesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookCopiesId", "RoomsId");
-
-                    b.HasIndex("RoomsId");
-
-                    b.ToTable("BookCopyRoom");
-                });
-
             modelBuilder.Entity("BookDonor", b =>
                 {
                     b.Property<int>("BooksId")
@@ -80,36 +50,6 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("LanguagesCode");
 
                     b.ToTable("BookLanguage");
-                });
-
-            modelBuilder.Entity("BookLibrary", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LibrariesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksId", "LibrariesId");
-
-                    b.HasIndex("LibrariesId");
-
-                    b.ToTable("BookLibrary");
-                });
-
-            modelBuilder.Entity("BookRoom", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksId", "RoomsId");
-
-                    b.HasIndex("RoomsId");
-
-                    b.ToTable("BookRoom");
                 });
 
             modelBuilder.Entity("BookSubCategory", b =>
@@ -236,52 +176,6 @@ namespace LibraryAPI.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("LibraryAPI.Models.Asset", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("AssetNumber")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<int?>("BookCopyId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("BookId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<bool>("IsAvailable")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("LibraryId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BookCopyId");
-
-                    b.HasIndex("BookId");
-
-                    b.HasIndex("LibraryId");
-
-                    b.ToTable("Asset");
-                });
-
             modelBuilder.Entity("LibraryAPI.Models.Author", b =>
                 {
                     b.Property<long>("AuthorId")
@@ -295,6 +189,10 @@ namespace LibraryAPI.Migrations
 
                     b.Property<short>("BirthDate")
                         .HasColumnType("smallint");
+
+                    b.Property<string>("CoverImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<short?>("DeathDate")
                         .HasColumnType("smallint");
@@ -334,6 +232,10 @@ namespace LibraryAPI.Migrations
 
                     b.Property<bool>("Banned")
                         .HasColumnType("bit");
+
+                    b.Property<string>("CoverImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(5000)
@@ -416,6 +318,27 @@ namespace LibraryAPI.Migrations
                     b.Property<DateTime?>("BorrowDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("BorrowingEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("BorrowingMemberId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DeliveringEmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("DeliveringMemberId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int?>("DonorId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("DonorId1")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("FavoritedDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsAvailable")
                         .HasColumnType("bit");
 
@@ -423,7 +346,6 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("LocationShelf")
-                        .IsRequired()
                         .HasMaxLength(6)
                         .HasColumnType("varchar(6)");
 
@@ -443,6 +365,18 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("BooksId");
 
+                    b.HasIndex("BorrowingEmployeeId");
+
+                    b.HasIndex("BorrowingMemberId");
+
+                    b.HasIndex("DeliveringEmployeeId");
+
+                    b.HasIndex("DeliveringMemberId");
+
+                    b.HasIndex("DonorId");
+
+                    b.HasIndex("DonorId1");
+
                     b.HasIndex("LocationShelf");
 
                     b.HasIndex("LocationShelf1");
@@ -454,36 +388,6 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("TranslatorId");
 
                     b.ToTable("BookCopies", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookCopyLibrary", b =>
-                {
-                    b.Property<int>("BookCopiesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LibrariesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookCopiesId", "LibrariesId");
-
-                    b.HasIndex("LibrariesId");
-
-                    b.ToTable("BookCopyLibraries", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookCopyRoom", b =>
-                {
-                    b.Property<int>("BookCopiesId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BookCopiesId", "RoomsId");
-
-                    b.HasIndex("RoomsId");
-
-                    b.ToTable("BookCopyRooms", (string)null);
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.BookDonor", b =>
@@ -514,36 +418,6 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("LanguagesCode");
 
                     b.ToTable("BookLanguages", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookLibrary", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LibrariesId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksId", "LibrariesId");
-
-                    b.HasIndex("LibrariesId");
-
-                    b.ToTable("BookLibraries", (string)null);
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookRoom", b =>
-                {
-                    b.Property<int>("BooksId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RoomsId")
-                        .HasColumnType("int");
-
-                    b.HasKey("BooksId", "RoomsId");
-
-                    b.HasIndex("RoomsId");
-
-                    b.ToTable("BookRooms", (string)null);
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.BookSubCategory", b =>
@@ -602,8 +476,14 @@ namespace LibraryAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int?>("BookCopyId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DonationDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("DonorId1")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .HasMaxLength(320)
@@ -620,6 +500,8 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BookCopyId");
+
                     b.ToTable("Donors");
                 });
 
@@ -627,6 +509,10 @@ namespace LibraryAPI.Migrations
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CoverImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Department")
                         .IsRequired()
@@ -647,6 +533,34 @@ namespace LibraryAPI.Migrations
                     b.ToTable("Employees");
                 });
 
+            modelBuilder.Entity("LibraryAPI.Models.FavoriteBook", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BookCopyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime?>("FavoriteDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("MemberId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookCopyId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("FavoriteBooks", (string)null);
+                });
+
             modelBuilder.Entity("LibraryAPI.Models.Language", b =>
                 {
                     b.Property<string>("Code")
@@ -661,33 +575,6 @@ namespace LibraryAPI.Migrations
                     b.HasKey("Code");
 
                     b.ToTable("Languages");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.Library", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("LibraryName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Library");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Location", b =>
@@ -709,12 +596,45 @@ namespace LibraryAPI.Migrations
                     b.Property<byte>("BorrowedDayLimit")
                         .HasColumnType("tinyint");
 
+                    b.Property<string>("CoverImageUrl")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
                     b.Property<byte>("EducationalDegree")
                         .HasColumnType("tinyint");
 
                     b.HasKey("Id");
 
                     b.ToTable("Members");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Penalty", b =>
+                {
+                    b.Property<int>("PenaltyId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PenaltyId"), 1L, 1);
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MemberId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("PenaltyAmount")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime>("PenaltyDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("PenaltyId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Penalties");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Publisher", b =>
@@ -749,10 +669,14 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Phone")
+                        .IsUnique()
+                        .HasFilter("[Phone] IS NOT NULL");
+
                     b.ToTable("Publishers");
                 });
 
-            modelBuilder.Entity("LibraryAPI.Models.Room", b =>
+            modelBuilder.Entity("LibraryAPI.Models.Rating", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -760,22 +684,41 @@ namespace LibraryAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Capacity")
+                    b.Property<double>("AverageRating")
+                        .HasColumnType("float");
+
+                    b.Property<int?>("BookCopyId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("LibraryId")
+                    b.Property<int?>("DonorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
+                    b.Property<int>("DonorId1")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmployeeId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("MemberId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("RatingAmount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RatingSum")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LibraryId");
+                    b.HasIndex("BookCopyId");
 
-                    b.ToTable("Room");
+                    b.HasIndex("DonorId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("MemberId");
+
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.SubCategory", b =>
@@ -967,36 +910,6 @@ namespace LibraryAPI.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("BookCopyLibrary", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.BookCopy", null)
-                        .WithMany()
-                        .HasForeignKey("BookCopiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Library", null)
-                        .WithMany()
-                        .HasForeignKey("LibrariesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BookCopyRoom", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.BookCopy", null)
-                        .WithMany()
-                        .HasForeignKey("BookCopiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Room", null)
-                        .WithMany()
-                        .HasForeignKey("RoomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("BookDonor", b =>
                 {
                     b.HasOne("LibraryAPI.Models.Book", null)
@@ -1023,36 +936,6 @@ namespace LibraryAPI.Migrations
                     b.HasOne("LibraryAPI.Models.Language", null)
                         .WithMany()
                         .HasForeignKey("LanguagesCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BookLibrary", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Library", null)
-                        .WithMany()
-                        .HasForeignKey("LibrariesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("BookRoom", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.Book", null)
-                        .WithMany()
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Room", null)
-                        .WithMany()
-                        .HasForeignKey("RoomsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -1085,27 +968,6 @@ namespace LibraryAPI.Migrations
                         .HasForeignKey("TranslatorsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.Asset", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
-                        .WithMany("Assets")
-                        .HasForeignKey("BookCopyId");
-
-                    b.HasOne("LibraryAPI.Models.Book", "Book")
-                        .WithMany("Assets")
-                        .HasForeignKey("BookId");
-
-                    b.HasOne("LibraryAPI.Models.Library", "Library")
-                        .WithMany("Assets")
-                        .HasForeignKey("LibraryId");
-
-                    b.Navigation("Book");
-
-                    b.Navigation("BookCopy");
-
-                    b.Navigation("Library");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.AuthorBook", b =>
@@ -1154,11 +1016,38 @@ namespace LibraryAPI.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("LibraryAPI.Models.Employee", "BorrowingEmployee")
+                        .WithMany("BorrowedBooks")
+                        .HasForeignKey("BorrowingEmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LibraryAPI.Models.Member", "BorrowingMember")
+                        .WithMany("BorrowedBooks")
+                        .HasForeignKey("BorrowingMemberId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LibraryAPI.Models.Employee", "DeliveringEmployee")
+                        .WithMany("DeliveredBooks")
+                        .HasForeignKey("DeliveringEmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LibraryAPI.Models.Member", "DeliveringMember")
+                        .WithMany("DeliveredBooks")
+                        .HasForeignKey("DeliveringMemberId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LibraryAPI.Models.Donor", null)
+                        .WithMany("BorrowedBooks")
+                        .HasForeignKey("DonorId");
+
+                    b.HasOne("LibraryAPI.Models.Donor", null)
+                        .WithMany("DeliveredBooks")
+                        .HasForeignKey("DonorId1");
+
                     b.HasOne("LibraryAPI.Models.Location", "Location")
                         .WithMany()
                         .HasForeignKey("LocationShelf")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("LibraryAPI.Models.Location", null)
                         .WithMany("BookCopies")
@@ -1182,49 +1071,19 @@ namespace LibraryAPI.Migrations
 
                     b.Navigation("Book");
 
+                    b.Navigation("BorrowingEmployee");
+
+                    b.Navigation("BorrowingMember");
+
+                    b.Navigation("DeliveringEmployee");
+
+                    b.Navigation("DeliveringMember");
+
                     b.Navigation("Location");
 
                     b.Navigation("Publisher");
 
                     b.Navigation("Translator");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookCopyLibrary", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
-                        .WithMany("BookCopyLibraries")
-                        .HasForeignKey("BookCopiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Library", "Library")
-                        .WithMany("BookCopyLibraries")
-                        .HasForeignKey("LibrariesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookCopy");
-
-                    b.Navigation("Library");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookCopyRoom", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
-                        .WithMany("BookCopyRooms")
-                        .HasForeignKey("BookCopiesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Room", "Room")
-                        .WithMany("BookCopyRooms")
-                        .HasForeignKey("RoomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BookCopy");
-
-                    b.Navigation("Room");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.BookDonor", b =>
@@ -1265,44 +1124,6 @@ namespace LibraryAPI.Migrations
                     b.Navigation("Language");
                 });
 
-            modelBuilder.Entity("LibraryAPI.Models.BookLibrary", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.Book", "Book")
-                        .WithMany("BookLibraries")
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Library", "Library")
-                        .WithMany("BookLibraries")
-                        .HasForeignKey("LibrariesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Library");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookRoom", b =>
-                {
-                    b.HasOne("LibraryAPI.Models.Book", "Book")
-                        .WithMany("BookRooms")
-                        .HasForeignKey("BooksId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LibraryAPI.Models.Room", "Room")
-                        .WithMany("BookRooms")
-                        .HasForeignKey("RoomsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Book");
-
-                    b.Navigation("Room");
-                });
-
             modelBuilder.Entity("LibraryAPI.Models.BookSubCategory", b =>
                 {
                     b.HasOne("LibraryAPI.Models.Book", "Book")
@@ -1341,6 +1162,15 @@ namespace LibraryAPI.Migrations
                     b.Navigation("Translator");
                 });
 
+            modelBuilder.Entity("LibraryAPI.Models.Donor", b =>
+                {
+                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
+                        .WithMany()
+                        .HasForeignKey("BookCopyId");
+
+                    b.Navigation("BookCopy");
+                });
+
             modelBuilder.Entity("LibraryAPI.Models.Employee", b =>
                 {
                     b.HasOne("LibraryAPI.Models.ApplicationUser", "ApplicationUser")
@@ -1350,6 +1180,31 @@ namespace LibraryAPI.Migrations
                         .IsRequired();
 
                     b.Navigation("ApplicationUser");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.FavoriteBook", b =>
+                {
+                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
+                        .WithMany()
+                        .HasForeignKey("BookCopyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("LibraryAPI.Models.Employee", "Employee")
+                        .WithMany("FavoriteBooks")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("LibraryAPI.Models.Member", "Member")
+                        .WithMany("FavoriteBooks")
+                        .HasForeignKey("MemberId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("BookCopy");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("Member");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Member", b =>
@@ -1363,13 +1218,36 @@ namespace LibraryAPI.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
-            modelBuilder.Entity("LibraryAPI.Models.Room", b =>
+            modelBuilder.Entity("LibraryAPI.Models.Penalty", b =>
                 {
-                    b.HasOne("LibraryAPI.Models.Library", "Library")
-                        .WithMany("Rooms")
-                        .HasForeignKey("LibraryId");
+                    b.HasOne("LibraryAPI.Models.Employee", null)
+                        .WithMany("Penalties")
+                        .HasForeignKey("EmployeeId");
 
-                    b.Navigation("Library");
+                    b.HasOne("LibraryAPI.Models.Member", null)
+                        .WithMany("Penalties")
+                        .HasForeignKey("MemberId");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Rating", b =>
+                {
+                    b.HasOne("LibraryAPI.Models.BookCopy", "BookCopy")
+                        .WithMany()
+                        .HasForeignKey("BookCopyId");
+
+                    b.HasOne("LibraryAPI.Models.Donor", null)
+                        .WithMany("Ratings")
+                        .HasForeignKey("DonorId");
+
+                    b.HasOne("LibraryAPI.Models.Employee", null)
+                        .WithMany("Ratings")
+                        .HasForeignKey("EmployeeId");
+
+                    b.HasOne("LibraryAPI.Models.Member", null)
+                        .WithMany("Ratings")
+                        .HasForeignKey("MemberId");
+
+                    b.Navigation("BookCopy");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.SubCategory", b =>
@@ -1441,8 +1319,6 @@ namespace LibraryAPI.Migrations
 
             modelBuilder.Entity("LibraryAPI.Models.Book", b =>
                 {
-                    b.Navigation("Assets");
-
                     b.Navigation("AuthorBooks");
 
                     b.Navigation("BookCopies");
@@ -1451,22 +1327,9 @@ namespace LibraryAPI.Migrations
 
                     b.Navigation("BookLanguages");
 
-                    b.Navigation("BookLibraries");
-
-                    b.Navigation("BookRooms");
-
                     b.Navigation("BookSubCategories");
 
                     b.Navigation("BookTranslators");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.BookCopy", b =>
-                {
-                    b.Navigation("Assets");
-
-                    b.Navigation("BookCopyLibraries");
-
-                    b.Navigation("BookCopyRooms");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Category", b =>
@@ -1477,22 +1340,30 @@ namespace LibraryAPI.Migrations
             modelBuilder.Entity("LibraryAPI.Models.Donor", b =>
                 {
                     b.Navigation("BookDonors");
+
+                    b.Navigation("BorrowedBooks");
+
+                    b.Navigation("DeliveredBooks");
+
+                    b.Navigation("Ratings");
+                });
+
+            modelBuilder.Entity("LibraryAPI.Models.Employee", b =>
+                {
+                    b.Navigation("BorrowedBooks");
+
+                    b.Navigation("DeliveredBooks");
+
+                    b.Navigation("FavoriteBooks");
+
+                    b.Navigation("Penalties");
+
+                    b.Navigation("Ratings");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Language", b =>
                 {
                     b.Navigation("BookLanguages");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.Library", b =>
-                {
-                    b.Navigation("Assets");
-
-                    b.Navigation("BookCopyLibraries");
-
-                    b.Navigation("BookLibraries");
-
-                    b.Navigation("Rooms");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Location", b =>
@@ -1502,18 +1373,24 @@ namespace LibraryAPI.Migrations
                     b.Navigation("Books");
                 });
 
+            modelBuilder.Entity("LibraryAPI.Models.Member", b =>
+                {
+                    b.Navigation("BorrowedBooks");
+
+                    b.Navigation("DeliveredBooks");
+
+                    b.Navigation("FavoriteBooks");
+
+                    b.Navigation("Penalties");
+
+                    b.Navigation("Ratings");
+                });
+
             modelBuilder.Entity("LibraryAPI.Models.Publisher", b =>
                 {
                     b.Navigation("BookCopies");
 
                     b.Navigation("Books");
-                });
-
-            modelBuilder.Entity("LibraryAPI.Models.Room", b =>
-                {
-                    b.Navigation("BookCopyRooms");
-
-                    b.Navigation("BookRooms");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.SubCategory", b =>

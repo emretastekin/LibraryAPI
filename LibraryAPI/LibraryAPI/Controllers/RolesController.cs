@@ -29,6 +29,12 @@ namespace LibraryAPI.Controllers
 
             identityRole = new IdentityRole("Worker");
             _roleManager.CreateAsync(identityRole).Wait();
+
+            identityRole = new IdentityRole("Employee");
+            _roleManager.CreateAsync(identityRole).Wait();
+
+            
+
         }
     }
 }

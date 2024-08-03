@@ -86,15 +86,27 @@ namespace LibraryAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
         {
-          if (_context.SubCategories == null)
-          {
-              return Problem("Entity set 'ApplicationContext.SubCategories'  is null.");
-          }
+            if (_context.SubCategories == null)
+            {
+                return Problem("Entity set 'ApplicationContext.SubCategories' is null.");
+            }
+
+            // Ayný CategoryID ve Name ile SubCategory olup olmadýðýný kontrol et
+            var existingSubCategory = await _context.SubCategories
+                .FirstOrDefaultAsync(sc => sc.Name == subCategory.Name && sc.CategoryID == subCategory.CategoryID);
+
+            if (existingSubCategory != null)
+            {
+                return BadRequest($"SubCategory with Name {subCategory.Name} already exists in Category ID {subCategory.CategoryID}.");
+            }
+
+            // Yeni SubCategory ekle
             _context.SubCategories.Add(subCategory);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetSubCategory", new { id = subCategory.Id }, subCategory);
         }
+
 
         // DELETE: api/SubCategories/5
         [HttpDelete("{id}")]

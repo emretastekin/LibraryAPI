@@ -25,22 +25,22 @@ namespace LibraryAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookLanguage>>> GetBookLanguages()
         {
-          if (_context.BookLanguages == null)
+          if (_context.BookLanguage == null)
           {
               return NotFound();
           }
-            return await _context.BookLanguages.ToListAsync();
+            return await _context.BookLanguage.ToListAsync();
         }
 
         // GET: api/BookLanguages/5
         [HttpGet("{id}")]
         public async Task<ActionResult<BookLanguage>> GetBookLanguage(int id)
         {
-          if (_context.BookLanguages == null)
+          if (_context.BookLanguage == null)
           {
               return NotFound();
           }
-            var bookLanguage = await _context.BookLanguages.FindAsync(id);
+            var bookLanguage = await _context.BookLanguage.FindAsync(id);
 
             if (bookLanguage == null)
             {
@@ -86,11 +86,11 @@ namespace LibraryAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<BookLanguage>> PostBookLanguage(BookLanguage bookLanguage)
         {
-          if (_context.BookLanguages == null)
+          if (_context.BookLanguage == null)
           {
               return Problem("Entity set 'ApplicationContext.BookLanguages'  is null.");
           }
-            _context.BookLanguages.Add(bookLanguage);
+            _context.BookLanguage.Add(bookLanguage);
             try
             {
                 await _context.SaveChangesAsync();
@@ -114,17 +114,17 @@ namespace LibraryAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookLanguage(int id)
         {
-            if (_context.BookLanguages == null)
+            if (_context.BookLanguage == null)
             {
                 return NotFound();
             }
-            var bookLanguage = await _context.BookLanguages.FindAsync(id);
+            var bookLanguage = await _context.BookLanguage.FindAsync(id);
             if (bookLanguage == null)
             {
                 return NotFound();
             }
 
-            _context.BookLanguages.Remove(bookLanguage);
+            _context.BookLanguage.Remove(bookLanguage);
             await _context.SaveChangesAsync();
 
             return NoContent();
@@ -132,7 +132,7 @@ namespace LibraryAPI.Controllers
 
         private bool BookLanguageExists(int id)
         {
-            return (_context.BookLanguages?.Any(e => e.BooksId == id)).GetValueOrDefault();
+            return (_context.BookLanguage?.Any(e => e.BooksId == id)).GetValueOrDefault();
         }
     }
 }

@@ -102,6 +102,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/Members
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPost]
         public async Task<ActionResult<Member>> PostMember(Member member)
         {
@@ -111,6 +112,9 @@ namespace LibraryAPI.Controllers
           }
             _userManager.CreateAsync(member.ApplicationUser!,member.ApplicationUser!.Password).Wait();
             _userManager.AddToRoleAsync(member.ApplicationUser!, "Member").Wait();
+            
+
+
             member.Id = member.ApplicationUser!.Id;
             member.ApplicationUser = null;
             _context.Members.Add(member);
@@ -133,6 +137,44 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetMember", new { id = member.Id }, member);
         }
 
+        [HttpPost("upload-cover-image/{memberId}")]
+        public async Task<IActionResult> UploadCoverImage(string memberId, IFormFile coverImage)
+        {
+            if (coverImage == null || coverImage.Length == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            // Kitabı bul
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null)
+            {
+                return NotFound("Member not found.");
+            }
+
+            // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var fileName = coverImage.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+            // Dosyayı kaydedin
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await coverImage.CopyToAsync(stream);
+            }
+
+            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            member.CoverImageUrl = $"/images/{fileName}";
+
+            // Kitap nesnesini güncelleyin
+            _context.Entry(member).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            // Dosyayı okuyup yanıt olarak döndürün
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            return File(fileBytes, "image/jpeg");
+
+        }
+
         // DELETE: api/Members/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMember(string id)
@@ -153,60 +195,151 @@ namespace LibraryAPI.Controllers
             return NoContent();
         }
 
-        [HttpPost("Login")]
-        public ActionResult Login(string userName, string password)
-        {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
-            Microsoft.AspNetCore.Identity.SignInResult signInResult;
+                
 
-            if (applicationUser != null)  //Kullanıcı kayıtlı olup olmadığını kontrol ediyor.
+        [HttpPost("BorrowBook/{memberId}/{bookCopyId}")]
+        public async Task<IActionResult> BorrowBook(string memberId, int bookCopyId)
+        {
+            var member = await _context.Members.Include(m => m.BorrowedBooks).FirstOrDefaultAsync(m => m.Id == memberId);
+
+            if (member == null)
             {
-                signInResult = _signInManager.PasswordSignInAsync(applicationUser, password, false, false).Result;
-                if (signInResult.Succeeded == true)
-                {
-                    return Ok();
-
-                }
+                return NotFound("Member not found");
             }
-            return Unauthorized();
+
+
+            var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
+            if(bookCopy==null || !bookCopy.IsAvailable)
+            {
+                return NotFound("Book copy not available");
+            }
+
+
+            if (member.BorrowedBooks != null && member.BorrowedBooks.Count >= 2  )
+            {
+                return BadRequest("You cannot borrow more than 2 books");
+            }
+
+            member.BorrowedBooks.Add(bookCopy);
+            bookCopy.IsAvailable = false;
+            bookCopy.BorrowingMemberId = memberId;
+
+            _context.Members.Update(member);
+            _context.BookCopies.Update(bookCopy);
+
+            await _context.SaveChangesAsync(); //Veri tabanı değişikliklerini kaydetmek için kullanılır.
+
+            return Ok("Book borrowed successfully");
         }
 
-        [HttpGet("Logout")]
-        public ActionResult LogOut()
+        [HttpPost("DeliverBook/{memberId}/{bookCopyId}")]
+        public async Task<IActionResult> DeliverBook(string memberId, int bookCopyId, int ratingValue)
         {
-            _signInManager.SignOutAsync();
-            return Ok();
+
+            //Applicationuser ile yap burayı
+            var member = await _context.Members.Include(m => m.BorrowedBooks).Include(m => m.DeliveredBooks).FirstOrDefaultAsync(m => m.Id == memberId);
+
+            if (member == null)
+            {
+                return NotFound("Member Not Found");
+            }
+
+            var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
+
+            if (bookCopy == null)
+            {
+                return NotFound("Book copy not avaliable");
+            }
+
+            if (bookCopy.IsAvailable)
+            {
+                return BadRequest("Book copy is already available");
+            }
+
+
+            if (!member.BorrowedBooks.Contains(bookCopy))
+            {
+                return BadRequest("Book copy was not delivered by this member");
+            }
+
+            var rating = await _context.Ratings.FirstOrDefaultAsync(r => r.BookCopy.Id == bookCopyId);
+
+
+            if (rating == null)
+            {
+                // If rating for this book copy doesn't exist, create a new one
+                rating = new Rating
+                {
+                    MemberId=memberId,
+                    RatingSum = ratingValue,
+                    RatingAmount = 1,
+                    BookCopy = bookCopy
+                };
+
+                _context.Ratings.Add(rating);
+            }
+            else
+            {
+                // Update existing rating
+                rating.RatingSum += ratingValue;
+                rating.RatingAmount++;
+                // Update average rating
+                rating.AverageRating = (double)rating.RatingSum / rating.RatingAmount;
+                _context.Ratings.Update(rating);
+            }
+
+
+
+
+            member.DeliveredBooks.Add(bookCopy);
+            member.BorrowedBooks.Remove(bookCopy);
+            bookCopy.IsAvailable = true;
+            bookCopy.DeliveringMemberId = memberId;
+
+            _context.Members.Update(member);
+            _context.BookCopies.Update(bookCopy);
+
+            await _context.SaveChangesAsync();
+
+            return Ok("Book delivered successfully");
+           
+
+
         }
 
-        [HttpPost("ForgetPassword")]
-        public ActionResult<string> ForgetPassword(string userName)
+        [HttpGet("BorrowedBookList/{memberId}")]
+        public async Task<IActionResult> BorrowedBookList(string memberId)
         {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
+            // Üyeyi ve kiraladığı kitapları yükle
+            var member = await _context.Members
+                .Include(m => m.BorrowedBooks)
+                .ThenInclude(b => b.Book)  //// Kitap bilgilerini de yükleyin
+                .FirstOrDefaultAsync(m => m.Id == memberId);
 
-            string token = _userManager.GeneratePasswordResetTokenAsync(applicationUser).Result;
-            System.Net.Mail.MailMessage mailMessage = new System.Net.Mail.MailMessage("abc@abc", applicationUser.Email, "Şifre sıfırlama", token);
+            if (member == null)
+            {
+                return NotFound("Member not found");
+            }
 
-            //Bu kod, temel anlamda bir e - posta mesajını SMTP
-            //sunucusu aracılığıyla göndermek için kullanılan
-            //standart bir işlemi temsil eder.
-            System.Net.Mail.SmtpClient smtpClient = new System.Net.Mail.SmtpClient("http://smtp.domain.com");
-            smtpClient.Send(mailMessage);
-            return token;
+            var borrowedBooks = member.BorrowedBooks.Select(b => new
+            {
+                b.Book.Id,
+                b.Book.Title,
+                BorrowDate = b.BorrowDate?.ToString(),
+                LocationShelf=b.LocationShelf?.ToString()
+            }).ToList();
+
+            return Ok(borrowedBooks);
         }
 
-        [HttpPost("ResetPassword")]
-        public ActionResult ResetPassword(string userName, string token, string newPassword)
-        {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
 
-            _userManager.ResetPasswordAsync(applicationUser, token, newPassword).Wait();
 
-            return Ok();
-        }
+
 
         private bool MemberExists(string id)
         {
             return (_context.Members?.Any(e => e.Id == id)).GetValueOrDefault();
         }
+        
     }
 }

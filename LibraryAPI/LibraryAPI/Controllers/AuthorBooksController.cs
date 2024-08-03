@@ -9,7 +9,7 @@ using LibraryAPI.Data;
 using LibraryAPI.Models;
 
 namespace LibraryAPI.Controllers
-{
+{   
     [Route("api/[controller]")]
     [ApiController]
     public class AuthorBooksController : ControllerBase

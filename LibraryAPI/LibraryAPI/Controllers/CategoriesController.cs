@@ -40,7 +40,7 @@ namespace LibraryAPI.Controllers
           {
               return NotFound();
           }
-            var category = await _context.Categories.FindAsync(id);
+            var category = await _context.Categories.Include(c => c.SubCategories).FirstOrDefaultAsync(c => c.Id == id);
 
             if (category == null)
             {

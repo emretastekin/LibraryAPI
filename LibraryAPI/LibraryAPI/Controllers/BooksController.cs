@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.VisualStudio.Web.CodeGeneration;
+using QRCoder;
+using SkiaSharp;
 
 namespace LibraryAPI.Controllers
 {
@@ -85,17 +88,19 @@ namespace LibraryAPI.Controllers
         // POST: api/Books
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
-        [Authorize(Roles ="Worker")]
+        //[Authorize(Roles ="Worker")]
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
             AuthorBook authorBook;
-            Category category = book.SubCategories[0].Category;
-
+            
+            //Category category = book.SubCategories[0].Category;
+            /*
             if (User.HasClaim("Category", category.Name) == false)
             {
                 return Unauthorized();
             }
+            */
           if (_context.Books == null)
           {
               return Problem("Entity set 'ApplicationContext.Books'  is null.");
@@ -116,6 +121,95 @@ namespace LibraryAPI.Controllers
 
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
+
+        
+        [HttpPost("upload-cover-image/{bookId}")]
+        public async Task<IActionResult> UploadCoverImage(int bookId, IFormFile coverImage)
+        {
+            if (coverImage == null || coverImage.Length == 0)
+            {
+                return BadRequest("No file uploaded.");
+            }
+
+            // Kitabı bul
+            var book = await _context.Books.FindAsync(bookId);
+            if (book == null)
+            {
+                return NotFound("Book not found.");
+            }
+
+            // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var fileName = coverImage.FileName;
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+            // Dosyayı kaydedin
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await coverImage.CopyToAsync(stream);
+            }
+
+            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            book.CoverImageUrl = $"/images/{fileName}";
+
+            // Kitap nesnesini güncelleyin
+            _context.Entry(book).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            // Dosyayı okuyup yanıt olarak döndürün
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
+            return File(fileBytes, "image/jpeg");
+
+        }
+
+
+
+        [HttpGet("QRCodeGenerator/{bookId}")]
+        public async Task<IActionResult> Generate(int bookId)
+        {
+            var book = await _context.Books
+                .Include(b => b.AuthorBooks)
+                .ThenInclude(ab => ab.Author)
+                .FirstOrDefaultAsync(b => b.Id == bookId);
+
+            if (book == null)
+            {
+                return NotFound("Book not found.");
+            }
+
+            var qrCodeContent = $"Kitap ID: {book.Id}\n" +
+                                $"Başlık: {book.Title}\n" +
+                                $"Yazarlar: {string.Join(", ", book.AuthorBooks.Select(ab => ab.Author.FullName))}\n" +
+                                $"Yayınevi: {book.Publisher?.Name}\n" +
+                                $"Yayın Tarihi: {book.PublishingYear:yyyy-MM-dd}";
+
+            byte[] qrCodeBytes;
+
+            // QR kodunu oluştur
+            using (var qrGenerator = new QRCodeGenerator())
+            {
+                var qrCodeData = qrGenerator.CreateQrCode(qrCodeContent, QRCodeGenerator.ECCLevel.Q);
+                var qrCode = new BitmapByteQRCode(qrCodeData);
+
+                // QR kodunu byte[] olarak al
+                var qrCodeImage = qrCode.GetGraphic(5);
+
+                // byte[]'i SKBitmap'e dönüştür
+                using (var skBitmap = SKBitmap.Decode(qrCodeImage))
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        skBitmap.Encode(stream, SKEncodedImageFormat.Png, 100);
+                        qrCodeBytes = stream.ToArray();
+                    }
+                }
+            }
+
+            // QR kodu PNG olarak döndür
+            return File(qrCodeBytes, "image/png");
+        }
+
+
+
 
         // DELETE: api/Books/5
         [HttpDelete("{id}")]
