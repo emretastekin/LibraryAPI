@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {   
@@ -22,6 +23,8 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/AuthorBooks
+
+        [Authorize(Roles ="Admin,Employee")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AuthorBook>>> GetAuthorBooks()
         {
@@ -33,6 +36,7 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/AuthorBooks/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet("{id}")]
         public async Task<ActionResult<AuthorBook>> GetAuthorBook(long id)
         {
@@ -52,6 +56,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/AuthorBooks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles ="Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthorBook(long id, AuthorBook authorBook)
         {
@@ -83,6 +88,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/AuthorBooks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<AuthorBook>> PostAuthorBook(AuthorBook authorBook)
         {
@@ -111,6 +117,7 @@ namespace LibraryAPI.Controllers
         }
 
         // DELETE: api/AuthorBooks/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthorBook(long id)
         {

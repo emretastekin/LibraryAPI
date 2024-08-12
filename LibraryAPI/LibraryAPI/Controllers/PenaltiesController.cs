@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using System.Diagnostics.Metrics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -21,6 +23,7 @@ namespace LibraryAPI.Controllers
             _context = context;
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost("PenaltyForMember/{memberId}")]
         public async Task<IActionResult> PenaltyForMember(string memberId)
         {
@@ -34,25 +37,47 @@ namespace LibraryAPI.Controllers
                 return NotFound("Member not found");
             }
 
-            foreach(var borrowedBookCopy in member.BorrowedBooks)
+            foreach (var borrowedBookCopy in member.BorrowedBooks)
             {
-                TimeSpan timeDifference = (TimeSpan)(DateTime.Today - borrowedBookCopy.BorrowDate);
-                int delayDays = (int)timeDifference.TotalDays;
-                
-
-                if (delayDays > 15)
+                // Teslim tarihi varsa, teslim tarihi ile ödünç alma tarihi arasýndaki farký hesapla
+                if (borrowedBookCopy.DeliveredDate.HasValue && borrowedBookCopy.BorrowDate.HasValue)
                 {
-                    var penaltyAmount = delayDays * 1;
+                    TimeSpan timeDifference = borrowedBookCopy.DeliveredDate.Value - borrowedBookCopy.BorrowDate.Value;
+                    int delayDays = (int)timeDifference.TotalDays;
 
-                    var penalty = new Penalty
+                    if (delayDays > 15)
                     {
-                        MemberId = memberId,
-                        PenaltyDate = DateTime.Today,
-                        PenaltyAmount = penaltyAmount
+                        var penaltyAmount = (delayDays - 15) * 1; // Ýlk 15 gün ceza uygulanmaz, sonrasýna ceza eklenir
 
-                    };
+                        var penalty = new Penalty
+                        {
+                            MemberId = memberId,
+                            PenaltyDate = DateTime.Today,
+                            PenaltyAmount = penaltyAmount
+                        };
 
-                    _context.Penalties.Add(penalty);
+                        _context.Penalties.Add(penalty);
+                    }
+                }
+                else if (!borrowedBookCopy.DeliveredDate.HasValue && borrowedBookCopy.BorrowDate.HasValue)
+                {
+                    // Eðer teslim tarihi yoksa, bugünkü tarihi kullanarak ceza hesapla
+                    TimeSpan timeDifference = DateTime.Today - borrowedBookCopy.BorrowDate.Value;
+                    int delayDays = (int)timeDifference.TotalDays;
+
+                    if (delayDays > 15)
+                    {
+                        var penaltyAmount = (delayDays - 15) * 1; // Ýlk 15 gün ceza uygulanmaz, sonrasýna ceza eklenir
+
+                        var penalty = new Penalty
+                        {
+                            MemberId = memberId,
+                            PenaltyDate = DateTime.Today,
+                            PenaltyAmount = penaltyAmount
+                        };
+
+                        _context.Penalties.Add(penalty);
+                    }
                 }
             }
 
@@ -61,6 +86,7 @@ namespace LibraryAPI.Controllers
             return Ok("Penalties added");
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost("PenaltyForEmployee/{employeeId}")]
         public async Task<IActionResult> PenaltyForEmployee(string employeeId)
         {
@@ -76,23 +102,45 @@ namespace LibraryAPI.Controllers
 
             foreach (var borrowedBookCopy in employee.BorrowedBooks)
             {
-                TimeSpan timeDifference = (TimeSpan)(DateTime.Today - borrowedBookCopy.BorrowDate);
-                int delayDays = (int)timeDifference.TotalDays;
-
-
-                if (delayDays > 10)
+                // Teslim tarihi varsa, teslim tarihi ile ödünç alma tarihi arasýndaki farký hesapla
+                if (borrowedBookCopy.DeliveredDate.HasValue && borrowedBookCopy.BorrowDate.HasValue)
                 {
-                    var penaltyAmount = delayDays * 1;
+                    TimeSpan timeDifference = borrowedBookCopy.DeliveredDate.Value - borrowedBookCopy.BorrowDate.Value;
+                    int delayDays = (int)timeDifference.TotalDays;
 
-                    var penalty = new Penalty
+                    if (delayDays > 15)
                     {
-                        EmployeeId = employeeId,
-                        PenaltyDate = DateTime.Today,
-                        PenaltyAmount = penaltyAmount
+                        var penaltyAmount = (delayDays - 15) * 1; // Ýlk 15 gün ceza uygulanmaz, sonrasýna ceza eklenir
 
-                    };
+                        var penalty = new Penalty
+                        {
+                            EmployeeId = employeeId,
+                            PenaltyDate = DateTime.Today,
+                            PenaltyAmount = penaltyAmount
+                        };
 
-                    _context.Penalties.Add(penalty);
+                        _context.Penalties.Add(penalty);
+                    }
+                }
+                else if (!borrowedBookCopy.DeliveredDate.HasValue && borrowedBookCopy.BorrowDate.HasValue)
+                {
+                    // Eðer teslim tarihi yoksa, bugünkü tarihi kullanarak ceza hesapla
+                    TimeSpan timeDifference = DateTime.Today - borrowedBookCopy.BorrowDate.Value;
+                    int delayDays = (int)timeDifference.TotalDays;
+
+                    if (delayDays > 15)
+                    {
+                        var penaltyAmount = (delayDays - 15) * 1; // Ýlk 15 gün ceza uygulanmaz, sonrasýna ceza eklenir
+
+                        var penalty = new Penalty
+                        {
+                            EmployeeId = employeeId,
+                            PenaltyDate = DateTime.Today,
+                            PenaltyAmount = penaltyAmount
+                        };
+
+                        _context.Penalties.Add(penalty);
+                    }
                 }
             }
 

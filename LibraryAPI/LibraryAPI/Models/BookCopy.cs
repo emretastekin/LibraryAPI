@@ -17,11 +17,15 @@ namespace LibraryAPI.Models
         public DateTime? BorrowDate { get; set; }
         public DateTime? FavoritedDate { get; set; }
 
+        public DateTime? DeliveredDate { get; set; }
+
         public int BooksId { get; set; }
 
         public int PublisherId { get; set; }
 
-        public int TranslatorId { get; set; }
+        public int? TranslatorId { get; set; }
+
+        public int? StockNumber { get; set; }
 
         public string? BorrowingMemberId { get; set; }
 

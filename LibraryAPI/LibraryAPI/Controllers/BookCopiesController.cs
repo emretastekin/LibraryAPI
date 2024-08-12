@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/BookCopies
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookCopy>>> GetBookCopies()
         {
@@ -33,6 +35,7 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/BookCopies/5
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpGet("{id}")]
         public async Task<ActionResult<BookCopy>> GetBookCopy(int id)
         {
@@ -52,6 +55,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/BookCopies/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBookCopy(int id, BookCopy bookCopy)
         {
@@ -83,6 +87,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/BookCopies
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<BookCopy>> PostBookCopy(BookCopy bookCopy)
         {
@@ -97,6 +102,7 @@ namespace LibraryAPI.Controllers
         }
 
         // DELETE: api/BookCopies/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookCopy(int id)
         {

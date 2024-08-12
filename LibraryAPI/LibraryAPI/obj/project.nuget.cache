@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s7I7C/+Rdtw=",
+  "dgSpecHash": "2Gectb2OXII=",
   "success": true,
-  "projectFilePath": "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
+  "projectFilePath": "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\emret\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\emret\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

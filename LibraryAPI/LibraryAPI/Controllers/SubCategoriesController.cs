@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -52,6 +53,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/SubCategories/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSubCategory(short id, SubCategory subCategory)
         {
@@ -83,6 +85,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/SubCategories
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<SubCategory>> PostSubCategory(SubCategory subCategory)
         {
@@ -109,6 +112,7 @@ namespace LibraryAPI.Controllers
 
 
         // DELETE: api/SubCategories/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteSubCategory(short id)
         {

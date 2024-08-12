@@ -56,6 +56,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/Books/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBook(int id, Book book)
         {
@@ -89,6 +90,7 @@ namespace LibraryAPI.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
         //[Authorize(Roles ="Worker")]
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<Book>> PostBook(Book book)
         {
@@ -122,7 +124,8 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetBook", new { id = book.Id }, book);
         }
 
-        
+
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost("upload-cover-image/{bookId}")]
         public async Task<IActionResult> UploadCoverImage(int bookId, IFormFile coverImage)
         {
@@ -131,44 +134,83 @@ namespace LibraryAPI.Controllers
                 return BadRequest("No file uploaded.");
             }
 
-            // KitabÄ± bul
+            // Kiþiyi bul
             var book = await _context.Books.FindAsync(bookId);
             if (book == null)
             {
                 return NotFound("Book not found.");
             }
 
-            // Dosya yolunu belirleyin (Ã¶rneÄŸin: wwwroot/images/{fileName})
-            var fileName = coverImage.FileName;
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+            // Dosya yolunu belirleyin (örneðin: wwwroot/images/{fileName})
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
 
-            // DosyayÄ± kaydedin
+            // Klasörün var olup olmadýðýný kontrol edin ve gerekiyorsa oluþturun
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
+            var fileName = coverImage.FileName;
+            var filePath = Path.Combine(uploadsFolder, fileName);
+
+            // Dosyayý kaydedin
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await coverImage.CopyToAsync(stream);
             }
 
-            // Kitap nesnesinin CoverImageUrl Ã¶zelliÄŸini gÃ¼ncelleyin
+            // Kiþinin CoverImageUrl özelliðini güncelleyin
             book.CoverImageUrl = $"/images/{fileName}";
 
-            // Kitap nesnesini gÃ¼ncelleyin
+            // Kiþi nesnesini güncelleyin
             _context.Entry(book).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
-            // DosyayÄ± okuyup yanÄ±t olarak dÃ¶ndÃ¼rÃ¼n
+            // Dosyayý okuyup yanýt olarak döndürün
             var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
             return File(fileBytes, "image/jpeg");
+        }
 
+        [Authorize(Roles = "Admin,Employee")]
+        [HttpDelete("remove-cover-image/{bookId}")]
+        public async Task<IActionResult> RemoveCoverImage(int bookId)
+        {
+            var book = await _context.Books.FindAsync(bookId);
+            if (book == null)
+            {
+                return NotFound("Book not found.");
+            }
+
+            // Eski kapak resminin dosya yolunu belirleyin
+            var oldFileName = Path.GetFileName(book.CoverImageUrl);
+            var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", oldFileName);
+
+            // Dosya varsa, dosyayý kaldýrýn
+            if (System.IO.File.Exists(oldFilePath))
+            {
+                System.IO.File.Delete(oldFilePath);
+            }
+
+            // Kapak resmini kaldýrýn
+            book.CoverImageUrl = null;
+
+            // Üye nesnesini güncelleyin
+            _context.Entry(book).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
 
 
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet("QRCodeGenerator/{bookId}")]
         public async Task<IActionResult> Generate(int bookId)
         {
             var book = await _context.Books
                 .Include(b => b.AuthorBooks)
                 .ThenInclude(ab => ab.Author)
+                .Include(b=>b.Publisher)
                 .FirstOrDefaultAsync(b => b.Id == bookId);
 
             if (book == null)
@@ -177,10 +219,10 @@ namespace LibraryAPI.Controllers
             }
 
             var qrCodeContent = $"Kitap ID: {book.Id}\n" +
-                                $"BaÅŸlÄ±k: {book.Title}\n" +
+                                $"Kitap Adý: {book.Title}\n" +
                                 $"Yazarlar: {string.Join(", ", book.AuthorBooks.Select(ab => ab.Author.FullName))}\n" +
-                                $"YayÄ±nevi: {book.Publisher?.Name}\n" +
-                                $"YayÄ±n Tarihi: {book.PublishingYear:yyyy-MM-dd}";
+                                $"Yayýnevi: {book.Publisher?.Name}\n" +
+                                $"Yayýn Tarihi: {book.PublishingYear}";
 
             byte[] qrCodeBytes;
 
@@ -212,6 +254,7 @@ namespace LibraryAPI.Controllers
 
 
         // DELETE: api/Books/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {

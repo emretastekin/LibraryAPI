@@ -45,7 +45,7 @@ namespace LibraryAPI.Migrations
                     PasswordHash = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     SecurityStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ConcurrencyStamp = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     PhoneNumberConfirmed = table.Column<bool>(type: "bit", nullable: false),
                     TwoFactorEnabled = table.Column<bool>(type: "bit", nullable: false),
                     LockoutEnd = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true),
@@ -403,8 +403,10 @@ namespace LibraryAPI.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            
+
             migrationBuilder.CreateTable(
-                name: "BookLanguage",
+                name: "BookLanguages",
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "int", nullable: false),
@@ -412,27 +414,23 @@ namespace LibraryAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookLanguage", x => new { x.BooksId, x.LanguagesCode });
+                    table.PrimaryKey("PK_BookLanguages", x => new { x.BooksId, x.LanguagesCode });
                     table.ForeignKey(
-                        name: "FK_BookLanguage_Books_BooksId",
+                        name: "FK_BookLanguages_Books_BooksId",
                         column: x => x.BooksId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookLanguage_Languages_LanguagesCode",
+                        name: "FK_BookLanguages_Languages_LanguagesCode",
                         column: x => x.LanguagesCode,
                         principalTable: "Languages",
                         principalColumn: "Code",
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            
-
-           
-
             migrationBuilder.CreateTable(
-                name: "BookSubCategory",
+                name: "BookSubCategories",
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "int", nullable: false),
@@ -440,46 +438,48 @@ namespace LibraryAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookSubCategory", x => new { x.BooksId, x.SubCategoriesId });
+                    table.PrimaryKey("PK_BookSubCategories", x => new { x.BooksId, x.SubCategoriesId });
                     table.ForeignKey(
-                        name: "FK_BookSubCategory_Books_BooksId",
+                        name: "FK_BookSubCategories_Books_BooksId",
                         column: x => x.BooksId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookSubCategory_SubCategories_SubCategoriesId",
+                        name: "FK_BookSubCategories_SubCategories_SubCategoriesId",
                         column: x => x.SubCategoriesId,
                         principalTable: "SubCategories",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            
+
+            
+
             migrationBuilder.CreateTable(
-                name: "BookTranslator",
+                name: "BookTranslators",
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "int", nullable: false),
-                    TranslatorsId = table.Column<int>(type: "int", nullable: false)
+                    TranslatorId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookTranslator", x => new { x.BooksId, x.TranslatorsId });
+                    table.PrimaryKey("PK_BookTranslators", x => new { x.BooksId, x.TranslatorId });
                     table.ForeignKey(
-                        name: "FK_BookTranslator_Books_BooksId",
+                        name: "FK_BookTranslators_Books_BooksId",
                         column: x => x.BooksId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookTranslator_Translator_TranslatorsId",
-                        column: x => x.TranslatorsId,
+                        name: "FK_BookTranslators_Translator_TranslatorId",
+                        column: x => x.TranslatorId,
                         principalTable: "Translator",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            
 
             migrationBuilder.CreateTable(
                 name: "BookCopies",
@@ -495,6 +495,7 @@ namespace LibraryAPI.Migrations
                     BooksId = table.Column<int>(type: "int", nullable: false),
                     PublisherId = table.Column<int>(type: "int", nullable: false),
                     TranslatorId = table.Column<int>(type: "int", nullable: false),
+                    StockNumber = table.Column<int>(type: "int", nullable: true),
                     BorrowingMemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     DeliveringMemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     BorrowingEmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
@@ -574,7 +575,6 @@ namespace LibraryAPI.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(800)", maxLength: 800, nullable: false),
-                    DonorId1 = table.Column<int>(type: "int", nullable: false),
                     Phone = table.Column<string>(type: "varchar(15)", maxLength: 15, nullable: true),
                     DonationDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Email = table.Column<string>(type: "varchar(320)", maxLength: 320, nullable: true),
@@ -623,8 +623,10 @@ namespace LibraryAPI.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
+            
+
             migrationBuilder.CreateTable(
-                name: "BookDonor",
+                name: "BookDonors",
                 columns: table => new
                 {
                     BooksId = table.Column<int>(type: "int", nullable: false),
@@ -632,22 +634,20 @@ namespace LibraryAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookDonor", x => new { x.BooksId, x.DonorsId });
+                    table.PrimaryKey("PK_BookDonors", x => new { x.BooksId, x.DonorsId });
                     table.ForeignKey(
-                        name: "FK_BookDonor_Books_BooksId",
+                        name: "FK_BookDonors_Books_BooksId",
                         column: x => x.BooksId,
                         principalTable: "Books",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookDonor_Donors_DonorsId",
+                        name: "FK_BookDonors_Donors_DonorsId",
                         column: x => x.DonorsId,
                         principalTable: "Donors",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            
 
             migrationBuilder.CreateTable(
                 name: "Ratings",
@@ -660,7 +660,7 @@ namespace LibraryAPI.Migrations
                     AverageRating = table.Column<double>(type: "float", nullable: false),
                     MemberId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     EmployeeId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    DonorId1 = table.Column<int>(type: "int", nullable: false),
+                    DonorId1 = table.Column<int>(type: "int", nullable: true),
                     BookCopyId = table.Column<int>(type: "int", nullable: true),
                     DonorId = table.Column<int>(type: "int", nullable: true)
                 },
@@ -720,6 +720,33 @@ namespace LibraryAPI.Migrations
                 name: "EmailIndex",
                 table: "AspNetUsers",
                 column: "NormalizedEmail");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_Email",
+                table: "AspNetUsers",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_IdNumber",
+                table: "AspNetUsers",
+                column: "IdNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_PhoneNumber",
+                table: "AspNetUsers",
+                column: "PhoneNumber",
+                unique: true,
+                filter: "[PhoneNumber] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AspNetUsers_UserName",
+                table: "AspNetUsers",
+                column: "UserName",
+                unique: true,
+                filter: "[UserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "UserNameIndex",
@@ -794,16 +821,28 @@ namespace LibraryAPI.Migrations
                 column: "TranslatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookDonor_DonorsId",
-                table: "BookDonor",
+                name: "IX_BookDonors_DonorsId",
+                table: "BookDonors",
                 column: "DonorsId");
 
-
             migrationBuilder.CreateIndex(
-                name: "IX_BookLanguage_LanguagesCode",
-                table: "BookLanguage",
+                name: "IX_BookLanguages_LanguagesCode",
+                table: "BookLanguages",
                 column: "LanguagesCode");
 
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_ISBN",
+                table: "Books",
+                column: "ISBN",
+                unique: true,
+                filter: "[ISBN] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Books_ISSN",
+                table: "Books",
+                column: "ISSN",
+                unique: true,
+                filter: "[ISSN] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Books_LocationShelf",
@@ -816,19 +855,33 @@ namespace LibraryAPI.Migrations
                 column: "PublisherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookSubCategory_SubCategoriesId",
-                table: "BookSubCategory",
+                name: "IX_BookSubCategories_SubCategoriesId",
+                table: "BookSubCategories",
                 column: "SubCategoriesId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookTranslator_TranslatorsId",
-                table: "BookTranslator",
-                column: "TranslatorsId");
+                name: "IX_BookTranslators_TranslatorId",
+                table: "BookTranslators",
+                column: "TranslatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Donors_BookCopyId",
                 table: "Donors",
                 column: "BookCopyId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Donors_Email",
+                table: "Donors",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Donors_Phone",
+                table: "Donors",
+                column: "Phone",
+                unique: true,
+                filter: "[Phone] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_FavoriteBooks_BookCopyId",
@@ -846,6 +899,24 @@ namespace LibraryAPI.Migrations
                 column: "MemberId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Languages_Code",
+                table: "Languages",
+                column: "Code",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Languages_Name",
+                table: "Languages",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Locations_Shelf",
+                table: "Locations",
+                column: "Shelf",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Penalties_EmployeeId",
                 table: "Penalties",
                 column: "EmployeeId");
@@ -854,6 +925,13 @@ namespace LibraryAPI.Migrations
                 name: "IX_Penalties_MemberId",
                 table: "Penalties",
                 column: "MemberId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Publishers_EMail",
+                table: "Publishers",
+                column: "EMail",
+                unique: true,
+                filter: "[EMail] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Publishers_Phone",
@@ -886,6 +964,20 @@ namespace LibraryAPI.Migrations
                 name: "IX_SubCategories_CategoryID",
                 table: "SubCategories",
                 column: "CategoryID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Translator_Email",
+                table: "Translator",
+                column: "Email",
+                unique: true,
+                filter: "[Email] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Translator_Phone",
+                table: "Translator",
+                column: "Phone",
+                unique: true,
+                filter: "[Phone] IS NOT NULL");
 
             migrationBuilder.AddForeignKey(
                 name: "FK_BookCopies_Donors_DonorId",
@@ -943,16 +1035,16 @@ namespace LibraryAPI.Migrations
                 name: "AuthorBooks");
 
             migrationBuilder.DropTable(
-                name: "BookDonor");
+                name: "BookDonors");
 
             migrationBuilder.DropTable(
-                name: "BookLanguage");
+                name: "BookLanguages");
 
             migrationBuilder.DropTable(
-                name: "BookSubCategory");
+                name: "BookSubCategories");
 
             migrationBuilder.DropTable(
-                name: "BookTranslator");
+                name: "BookTranslators");
 
             migrationBuilder.DropTable(
                 name: "FavoriteBooks");

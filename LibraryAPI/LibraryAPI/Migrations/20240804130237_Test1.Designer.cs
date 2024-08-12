@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240803123450_Test1")]
+    [Migration("20240804130237_Test1")]
     partial class Test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -144,7 +144,7 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
@@ -167,6 +167,13 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("IdNumber")
+                        .IsUnique();
+
                     b.HasIndex("NormalizedEmail")
                         .HasDatabaseName("EmailIndex");
 
@@ -174,6 +181,14 @@ namespace LibraryAPI.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
+
+                    b.HasIndex("PhoneNumber")
+                        .IsUnique()
+                        .HasFilter("[PhoneNumber] IS NOT NULL");
+
+                    b.HasIndex("UserName")
+                        .IsUnique()
+                        .HasFilter("[UserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
                 });
@@ -299,6 +314,14 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ISBN")
+                        .IsUnique()
+                        .HasFilter("[ISBN] IS NOT NULL");
+
+                    b.HasIndex("ISSN")
+                        .IsUnique()
+                        .HasFilter("[ISSN] IS NOT NULL");
+
                     b.HasIndex("LocationShelf");
 
                     b.HasIndex("PublisherId");
@@ -358,6 +381,9 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("PublisherId1")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("StockNumber")
                         .HasColumnType("int");
 
                     b.Property<int>("TranslatorId")
@@ -484,9 +510,6 @@ namespace LibraryAPI.Migrations
                     b.Property<DateTime>("DonationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DonorId1")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .HasMaxLength(320)
                         .HasColumnType("varchar(320)");
@@ -503,6 +526,14 @@ namespace LibraryAPI.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("BookCopyId");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("Phone")
+                        .IsUnique()
+                        .HasFilter("[Phone] IS NOT NULL");
 
                     b.ToTable("Donors");
                 });
@@ -576,6 +607,12 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Code");
 
+                    b.HasIndex("Code")
+                        .IsUnique();
+
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Languages");
                 });
 
@@ -586,6 +623,9 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("varchar(6)");
 
                     b.HasKey("Shelf");
+
+                    b.HasIndex("Shelf")
+                        .IsUnique();
 
                     b.ToTable("Locations");
                 });
@@ -671,6 +711,10 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("EMail")
+                        .IsUnique()
+                        .HasFilter("[EMail] IS NOT NULL");
+
                     b.HasIndex("Phone")
                         .IsUnique()
                         .HasFilter("[Phone] IS NOT NULL");
@@ -695,7 +739,7 @@ namespace LibraryAPI.Migrations
                     b.Property<int?>("DonorId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DonorId1")
+                    b.Property<int?>("DonorId1")
                         .HasColumnType("int");
 
                     b.Property<string>("EmployeeId")
@@ -775,6 +819,14 @@ namespace LibraryAPI.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("Phone")
+                        .IsUnique()
+                        .HasFilter("[Phone] IS NOT NULL");
 
                     b.ToTable("Translator");
                 });

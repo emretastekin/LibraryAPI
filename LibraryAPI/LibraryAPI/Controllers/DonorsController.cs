@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -52,6 +53,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/Donors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDonor(int id, Donor donor)
         {
@@ -83,6 +85,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/Donors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPost]
         public async Task<ActionResult<Donor>> PostDonor(Donor donor)
         {
@@ -97,6 +100,7 @@ namespace LibraryAPI.Controllers
         }
 
         // DELETE: api/Donors/5
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDonor(int id)
         {
@@ -116,9 +120,11 @@ namespace LibraryAPI.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin,Member,Employee")]
         [HttpPost("BorrowBook/{donorId}/{bookCopyId}")]
         public async Task<IActionResult> BorrowBook(int donorId, int bookCopyId)
         {
+            // Üyenin var olup olmadığını kontrol et ve BorrowedBooks ile birlikte getir
             var donor = await _context.Donors.Include(m => m.BorrowedBooks).FirstOrDefaultAsync(m => m.Id == donorId);
 
             if (donor == null)
@@ -126,30 +132,54 @@ namespace LibraryAPI.Controllers
                 return NotFound("Donor not found");
             }
 
-
+            // Kitap kopyasının var olup olmadığını ve müsait olup olmadığını kontrol et
             var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
-            if (bookCopy == null || !bookCopy.IsAvailable)
+            if (bookCopy == null)
             {
                 return NotFound("Book copy not available");
             }
 
+            // Kitap kopyasının stok sayısını kontrol et
+            if (bookCopy.StockNumber <= 0)
+            {
+                return BadRequest("No copies of the book are currently available");
+            }
 
+            // Üyenin halihazırda ödünç aldığı kitap sayısını kontrol et
             if (donor.BorrowedBooks != null && donor.BorrowedBooks.Count >= 2)
             {
                 return BadRequest("You cannot borrow more than 2 books");
             }
 
+            // Üyenin aynı kitap kopyasını daha önce ödünç alıp almadığını kontrol et
+            if (donor.BorrowedBooks != null && donor.BorrowedBooks.Any(b => b.Id == bookCopyId))
+            {
+                return BadRequest("You have already borrowed this book copy");
+            }
+
+            // Kitap ödünç alma işlemi
             donor.BorrowedBooks.Add(bookCopy);
-            bookCopy.IsAvailable = false;
+            bookCopy.BorrowDate = DateTime.Now; // Burada BorrowDate özelliğini güncelliyoruz
+
+            // Stok sayısını güncelle
+            bookCopy.StockNumber--;
+
+            // Stok sayısı 0 olduğunda IsAvailable özelliğini false yap
+            if (bookCopy.StockNumber == 0)
+            {
+                bookCopy.IsAvailable = false;
+            }
 
             _context.Donors.Update(donor);
             _context.BookCopies.Update(bookCopy);
 
-            await _context.SaveChangesAsync(); //Veri tabanı değişikliklerini kaydetmek için kullanılır.
+            // Veri tabanı değişikliklerini kaydet
+            await _context.SaveChangesAsync();
 
             return Ok("Book borrowed successfully");
         }
 
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPost("DeliverBook/{donorId}/{bookCopyId}")]
         public async Task<IActionResult> DeliverBook(int donorId, int bookCopyId, int ratingValue)
         {
@@ -210,6 +240,9 @@ namespace LibraryAPI.Controllers
             donor.DeliveredBooks.Add(bookCopy);
             donor.BorrowedBooks.Remove(bookCopy);
             bookCopy.IsAvailable = true;
+
+            bookCopy.DeliveredDate = DateTime.Now;
+            bookCopy.StockNumber++;  // Stok sayısını artır
 
             _context.Donors.Update(donor);
             _context.BookCopies.Update(bookCopy);

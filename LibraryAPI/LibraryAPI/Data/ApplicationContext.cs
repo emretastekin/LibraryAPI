@@ -33,6 +33,8 @@ namespace LibraryAPI.Data
         public DbSet<FavoriteBook>? FavoriteBooks { get; set; }
         public DbSet<Penalty>? Penalties { get; set; }
         public DbSet<Rating>? Ratings { get; set; }
+        public DbSet<ApplicationUser>? ApplicationUsers { get; set; }
+
 
 
 
@@ -41,6 +43,69 @@ namespace LibraryAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.IdNumber)
+                .IsUnique();
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.UserName)
+                .IsUnique();
+
+            modelBuilder.Entity<ApplicationUser>()
+                .HasIndex(u => u.PhoneNumber)
+                .IsUnique();
+
+            modelBuilder.Entity<Book>()
+                .HasIndex(b => b.ISBN)
+                .IsUnique();
+
+            modelBuilder.Entity<Book>()
+                .HasIndex(b => b.ISSN)
+                .IsUnique();
+
+            modelBuilder.Entity<Donor>()
+                .HasIndex(d => d.Phone)
+                .IsUnique();
+
+            modelBuilder.Entity<Donor>()
+                .HasIndex(d => d.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<Language>()
+                .HasIndex(l => l.Code)
+                .IsUnique();
+
+            modelBuilder.Entity<Language>()
+                .HasIndex(l => l.Name)
+                .IsUnique();
+
+            modelBuilder.Entity<Location>()
+                .HasIndex(lo => lo.Shelf)
+                .IsUnique();
+
+            modelBuilder.Entity<Publisher>()
+                .HasIndex(lo => lo.Phone)
+                .IsUnique();
+
+            modelBuilder.Entity<Publisher>()
+                .HasIndex(lo => lo.EMail)
+                .IsUnique();
+
+            modelBuilder.Entity<Translator>()
+                .HasIndex(lo => lo.Email)
+                .IsUnique();
+
+            modelBuilder.Entity<Translator>()
+                .HasIndex(lo => lo.Phone)
+                .IsUnique();
+
+
+
             // AuthorBook tablosunu yapılandırma
             modelBuilder.Entity<AuthorBook>()
                 .ToTable("AuthorBooks") // Tablo adını açıkça belirtin
@@ -72,7 +137,7 @@ namespace LibraryAPI.Data
                 .HasForeignKey(bl => bl.LanguagesCode);
 
             modelBuilder.Entity<BookSubCategory>()
-                .ToTable("BookSubCategories")
+                .ToTable("BookSubCategories")                
                 .HasKey(cl => new { cl.BooksId, cl.SubCategoriesId });
 
             modelBuilder.Entity<BookSubCategory>()
@@ -140,6 +205,9 @@ namespace LibraryAPI.Data
                 .WithOne(b => b.DeliveringMember)
                 .HasForeignKey(b => b.DeliveringMemberId)
                 .OnDelete(DeleteBehavior.Restrict);
+
+            
+
 
             modelBuilder.Entity<Employee>()
                 .HasMany(e => e.BorrowedBooks)

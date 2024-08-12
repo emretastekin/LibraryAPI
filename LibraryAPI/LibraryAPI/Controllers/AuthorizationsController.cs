@@ -73,10 +73,15 @@ namespace LibraryAPI.Controllers
         public ActionResult Login(string userName, string password)
         {
             ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
-            //Microsoft.AspNetCore.Identity.SignInResult signInResult;
 
             if (applicationUser != null)
             {
+                // Üyenin aktif olup olmadığını kontrol et
+                if (!applicationUser.IsActive)
+                {
+                    return Unauthorized("Üye inaktif");
+                }
+
                 var signInResult = _userManager.CheckPasswordAsync(applicationUser, password).Result;
                 if (signInResult)
                 {
@@ -86,6 +91,7 @@ namespace LibraryAPI.Controllers
             }
             return Unauthorized();
         }
+
 
 
 
@@ -158,13 +164,23 @@ namespace LibraryAPI.Controllers
         }
 
         [HttpPost("ResetPassword")]
-        public ActionResult ResetPassword(string userName, string token, string newPassword)
+        public async Task<IActionResult> ResetPassword(string userName, string token, string newPassword)
         {
-            ApplicationUser applicationUser = _userManager.FindByNameAsync(userName).Result;
+            var user = await _userManager.FindByNameAsync(userName);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
 
-            _userManager.ResetPasswordAsync(applicationUser, token, newPassword).Wait();
+            var result = await _userManager.ResetPasswordAsync(user, token, newPassword);
+            if (!result.Succeeded)
+            {
+                var errors = result.Errors.Select(e => e.Description);
+                return BadRequest(new { Errors = errors });
+            }
 
-            return Ok();
+            return Ok("Password reset successful.");
         }
+
     }
 }

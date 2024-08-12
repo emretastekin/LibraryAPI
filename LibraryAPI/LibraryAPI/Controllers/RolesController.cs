@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LibraryAPI.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace LibraryAPI.Controllers
             _roleManager = roleManager;
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void CreateRoles()  //Bir action dır.
         {

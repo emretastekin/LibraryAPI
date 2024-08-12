@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics.Metrics;
 
 namespace LibraryAPI.Controllers
 {
@@ -20,6 +22,7 @@ namespace LibraryAPI.Controllers
         {
             _context = context;
         }
+
 
         [HttpGet("FavoritedBookList/{memberId}")]
         public async Task<IActionResult> FavoritedBookList(string memberId)
@@ -43,7 +46,7 @@ namespace LibraryAPI.Controllers
                 {
                     BookId = fb.BookCopy.Book.Id,
                     Title = fb.BookCopy.Book.Title,
-                    FavoritedDate = fb.FavoriteDate.HasValue ? fb.FavoriteDate.Value.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss") : null,
+                    FavoritedDate = fb.FavoriteDate.HasValue ? fb.FavoriteDate.Value.ToString("yyyy-MM-dd HH:mm:ss") : null,
                 }).ToList();
 
 
@@ -110,6 +113,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/FavoriteBooks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutFavoriteBook(string id, FavoriteBook favoriteBook)
         {
@@ -139,6 +143,7 @@ namespace LibraryAPI.Controllers
             return NoContent();
         }
 
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost("FavoriteBook/{memberId}/{bookCopyId}")]
         public async Task<IActionResult> FavoriteBook(string memberId, int bookCopyId)
         {
@@ -148,9 +153,9 @@ namespace LibraryAPI.Controllers
                     .Include(m => m.FavoriteBooks)
                     .FirstOrDefaultAsync(m => m.Id == memberId);
 
-                if (member == null)
+                if (member == null || !member.IsActive)
                 {
-                    return NotFound("Member not found");
+                    return NotFound("Member not found or inactive");
                 }
 
                 // Doğru şekilde BookCopyId property'sini kullanın
@@ -171,10 +176,17 @@ namespace LibraryAPI.Controllers
                     Id = Guid.NewGuid().ToString(),
                     BookCopyId = bookCopyId,
                     MemberId = memberId,
-                    FavoriteDate = DateTime.UtcNow
+                    FavoriteDate = DateTime.Now
                 };
 
                 _context.FavoriteBooks.Add(newFavorite);
+
+                // Kitap kopyasının favori tarihini güncelleyin
+                bookCopy.FavoritedDate = DateTime.Now;
+
+                _context.BookCopies.Update(bookCopy);
+
+                // Veri tabanı değişikliklerini kaydedin
                 await _context.SaveChangesAsync();
 
                 return Ok("Book added to favorites successfully");
@@ -185,7 +197,7 @@ namespace LibraryAPI.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Admin,Member")]
         [HttpDelete("RemoveBook/{memberId}/{bookCopyId}")]
         public async Task<IActionResult> RemoveBook(string memberId, int bookCopyId)
         {
@@ -195,9 +207,9 @@ namespace LibraryAPI.Controllers
                     .Include(m => m.FavoriteBooks)
                     .FirstOrDefaultAsync(m => m.Id == memberId);
 
-                if (member == null)
+                if (member == null || !member.IsActive)
                 {
-                    return NotFound("Member not found");
+                    return NotFound("Member not found or inactive");
                 }
 
                 // Find the FavoriteBook to remove based on both MemberId and BookCopyId
@@ -222,7 +234,7 @@ namespace LibraryAPI.Controllers
         }
 
 
-
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost("FavoriteBookk/{employeeId}/{bookCopyId}")]
         public async Task<IActionResult> FavoriteBookk(string employeeId, int bookCopyId)
         {
@@ -232,9 +244,9 @@ namespace LibraryAPI.Controllers
                     .Include(m => m.FavoriteBooks)
                     .FirstOrDefaultAsync(m => m.Id == employeeId);
 
-                if (employee == null)
+                if (employee == null || !employee.IsActive)
                 {
-                    return NotFound("Employee not found");
+                    return NotFound("Employee not found or inactive");
                 }
 
                 // Doğru şekilde BookCopyId property'sini kullanın
@@ -255,7 +267,7 @@ namespace LibraryAPI.Controllers
                     Id = Guid.NewGuid().ToString(),
                     BookCopyId = bookCopyId,
                     EmployeeId = employeeId,
-                    FavoriteDate = DateTime.UtcNow
+                    FavoriteDate = DateTime.Now
                 };
 
                 _context.FavoriteBooks.Add(newFavorite);
@@ -269,7 +281,7 @@ namespace LibraryAPI.Controllers
             }
         }
 
-
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("RemoveBookk/{employeeId}/{bookCopyId}")]
         public async Task<IActionResult> RemoveBookk(string employeeId, int bookCopyId)
         {
@@ -279,9 +291,9 @@ namespace LibraryAPI.Controllers
                     .Include(m => m.FavoriteBooks)
                     .FirstOrDefaultAsync(m => m.Id == employeeId);
 
-                if (employee == null)
+                if (employee == null || !employee.IsActive)
                 {
-                    return NotFound("Employee not found");
+                    return NotFound("Employee not found or inactive");
                 }
 
                 // Find the FavoriteBook to remove based on both MemberId and BookCopyId

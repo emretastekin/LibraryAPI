@@ -40,5 +40,6 @@
     <Folder Include="Data\" />
     <Folder Include="Services\" />
     <Folder Include="Dtos\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 </Project>

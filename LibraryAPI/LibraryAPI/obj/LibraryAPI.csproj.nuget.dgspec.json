@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj": {}
+    "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj": {}
   },
   "projects": {
-    "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj": {
+    "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
+        "projectUniqueName": "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
         "projectName": "LibraryAPI",
-        "projectPath": "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
+        "projectPath": "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\LibraryAPI.csproj",
         "packagesPath": "C:\\Users\\emret\\.nuget\\packages\\",
-        "outputPath": "D:\\Yedek\\SoftIto Backend Eğitimi\\LibraryAPI\\LibraryAPI\\obj\\",
+        "outputPath": "D:\\Yedek\\Emre_Taştekin\\Projeler\\LibraryAPI\\LibraryAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\VS SDK\\NuGetPackages"

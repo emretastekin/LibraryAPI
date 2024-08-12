@@ -24,6 +24,9 @@ namespace LibraryAPI.Models
         [Compare(nameof(Password))]
         public string? ConfirmPassword { get; set; }
 
+        public bool IsActive { get; set; } = true; // Varsayılan olarak aktif
+
+
     }
 
     public class Member 
@@ -40,6 +43,9 @@ namespace LibraryAPI.Models
 
         [StringLength(500)]
         public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
+
+        public bool IsActive { get; set; } = true; // Varsayılan olarak aktif
+
 
         [JsonIgnore]
         public List<BookCopy>? BorrowedBooks { get; set; }  //Üyenin kiraladığı kitap kopyaları
@@ -76,6 +82,9 @@ namespace LibraryAPI.Models
 
         [StringLength(500)]
         public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
+
+        public bool IsActive { get; set; } = true; // Varsayılan olarak aktif
+
 
         [JsonIgnore]
         public List<BookCopy>? BorrowedBooks { get; set; }  //Employee'nin kiraladığı kitaplar

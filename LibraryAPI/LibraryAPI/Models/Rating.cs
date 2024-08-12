@@ -15,7 +15,7 @@ namespace LibraryAPI.Models
 
 		public string? EmployeeId { get; set; }
 
-		public int DonorId1 { get; set; }
+		public int? DonorId1 { get; set; }
 
         public BookCopy? BookCopy { get; set; }
 

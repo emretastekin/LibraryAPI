@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
 using Microsoft.AspNetCore.Identity;
+using QRCoder;
+using SkiaSharp;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -57,6 +60,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/Members/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutMember(string id, Member member,string? currentPassword=null)
         {
@@ -103,6 +107,7 @@ namespace LibraryAPI.Controllers
         // POST: api/Members
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
 
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPost]
         public async Task<ActionResult<Member>> PostMember(Member member)
         {
@@ -137,6 +142,7 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetMember", new { id = member.Id }, member);
         }
 
+        [Authorize(Roles = "Admin,Employee,Member")]
         [HttpPost("upload-cover-image/{memberId}")]
         public async Task<IActionResult> UploadCoverImage(string memberId, IFormFile coverImage)
         {
@@ -145,7 +151,7 @@ namespace LibraryAPI.Controllers
                 return BadRequest("No file uploaded.");
             }
 
-            // Kitabı bul
+            // Kişiyi bul
             var member = await _context.Members.FindAsync(memberId);
             if (member == null)
             {
@@ -153,8 +159,16 @@ namespace LibraryAPI.Controllers
             }
 
             // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+            // Klasörün var olup olmadığını kontrol edin ve gerekiyorsa oluşturun
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
             var fileName = coverImage.FileName;
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
 
             // Dosyayı kaydedin
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -162,19 +176,49 @@ namespace LibraryAPI.Controllers
                 await coverImage.CopyToAsync(stream);
             }
 
-            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            // Kişinin CoverImageUrl özelliğini güncelleyin
             member.CoverImageUrl = $"/images/{fileName}";
 
-            // Kitap nesnesini güncelleyin
+            // Kişi nesnesini güncelleyin
             _context.Entry(member).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             // Dosyayı okuyup yanıt olarak döndürün
             var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
             return File(fileBytes, "image/jpeg");
-
         }
 
+        [Authorize(Roles = "Admin,Employee,Member")]
+        [HttpDelete("remove-cover-image/{memberId}")]
+        public async Task<IActionResult> RemoveCoverImage(string memberId)
+        {
+            var member = await _context.Members.FindAsync(memberId);
+            if (member == null)
+            {
+                return NotFound("Member not found.");
+            }
+
+            // Eski kapak resminin dosya yolunu belirleyin
+            var oldFileName = Path.GetFileName(member.CoverImageUrl);
+            var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", oldFileName);
+
+            // Dosya varsa, dosyayı kaldırın
+            if (System.IO.File.Exists(oldFilePath))
+            {
+                System.IO.File.Delete(oldFilePath);
+            }
+
+            // Kapak resmini kaldırın
+            member.CoverImageUrl = null;
+
+            // Üye nesnesini güncelleyin
+            _context.Entry(member).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+        /*
         // DELETE: api/Members/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteMember(string id)
@@ -194,83 +238,178 @@ namespace LibraryAPI.Controllers
 
             return NoContent();
         }
+        */
 
-                
-
-        [HttpPost("BorrowBook/{memberId}/{bookCopyId}")]
-        public async Task<IActionResult> BorrowBook(string memberId, int bookCopyId)
+        [Authorize(Roles = "Admin")]
+        [HttpPut("Deactivate/{memberId}")]
+        public async Task<IActionResult> DeactivateMember(string memberId)
         {
-            var member = await _context.Members.Include(m => m.BorrowedBooks).FirstOrDefaultAsync(m => m.Id == memberId);
+            var member = await _context.Members
+                .Include(m => m.ApplicationUser) // ApplicationUser ile ilişkiyi dahil ediyoruz
+                .FirstOrDefaultAsync(m => m.Id == memberId);
 
             if (member == null)
             {
-                return NotFound("Member not found");
+                return NotFound();
             }
 
+            member.IsActive = false;
 
+            if (member.ApplicationUser != null)
+            {
+                member.ApplicationUser.IsActive = false;
+            }
+
+            _context.Entry(member).State = EntityState.Modified;
+
+            if (member.ApplicationUser != null)
+            {
+                _context.Entry(member.ApplicationUser).State = EntityState.Modified;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+        [Authorize(Roles = "Admin")]
+        [HttpPut("Activate/{memberId}")]
+        public async Task<IActionResult> ActivateMember(string memberId)
+        {
+            var member = await _context.Members
+                .Include(m => m.ApplicationUser) // ApplicationUser ile ilişkiyi dahil ediyoruz
+                .FirstOrDefaultAsync(m => m.Id == memberId);
+
+            if (member == null)
+            {
+                return NotFound();
+            }
+
+            member.IsActive = true;
+
+            if (member.ApplicationUser != null)
+            {
+                member.ApplicationUser.IsActive = true;
+            }
+
+            _context.Entry(member).State = EntityState.Modified;
+
+            if (member.ApplicationUser != null)
+            {
+                _context.Entry(member.ApplicationUser).State = EntityState.Modified;
+            }
+
+            await _context.SaveChangesAsync();
+
+            return NoContent();
+        }
+
+
+        [Authorize(Roles = "Admin,Member")]
+        [HttpPost("BorrowBook/{memberId}/{bookCopyId}")]
+        public async Task<IActionResult> BorrowBook(string memberId, int bookCopyId)
+        {
+            // Üyenin var olup olmadığını kontrol et ve BorrowedBooks ile birlikte getir
+            var member = await _context.Members.Include(m => m.BorrowedBooks).FirstOrDefaultAsync(m => m.Id == memberId);
+
+            if (member == null || !member.IsActive)
+            {
+                return NotFound("Member not found or inactive");
+            }
+
+            // Kitap kopyasının var olup olmadığını ve müsait olup olmadığını kontrol et
             var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
-            if(bookCopy==null || !bookCopy.IsAvailable)
+            if (bookCopy == null)
             {
                 return NotFound("Book copy not available");
             }
 
+            // Kitap kopyasının stok sayısını kontrol et
+            if (bookCopy.StockNumber <= 0)
+            {
+                return BadRequest("No copies of the book are currently available");
+            }
 
-            if (member.BorrowedBooks != null && member.BorrowedBooks.Count >= 2  )
+            // Üyenin halihazırda ödünç aldığı kitap sayısını kontrol et
+            if (member.BorrowedBooks != null && member.BorrowedBooks.Count >= 2)
             {
                 return BadRequest("You cannot borrow more than 2 books");
             }
 
+            // Üyenin aynı kitap kopyasını daha önce ödünç alıp almadığını kontrol et
+            if (member.BorrowedBooks != null && member.BorrowedBooks.Any(b => b.Id == bookCopyId))
+            {
+                return BadRequest("You have already borrowed this book copy");
+            }
+
+            // Kitap ödünç alma işlemi
             member.BorrowedBooks.Add(bookCopy);
-            bookCopy.IsAvailable = false;
             bookCopy.BorrowingMemberId = memberId;
+            bookCopy.BorrowDate = DateTime.Now; // Burada BorrowDate özelliğini güncelliyoruz
+
+            // Stok sayısını güncelle
+            bookCopy.StockNumber--;
+
+            // Stok sayısı 0 olduğunda IsAvailable özelliğini false yap
+            if (bookCopy.StockNumber == 0)
+            {
+                bookCopy.IsAvailable = false;
+            }
 
             _context.Members.Update(member);
             _context.BookCopies.Update(bookCopy);
 
-            await _context.SaveChangesAsync(); //Veri tabanı değişikliklerini kaydetmek için kullanılır.
+            // Veri tabanı değişikliklerini kaydet
+            await _context.SaveChangesAsync();
 
             return Ok("Book borrowed successfully");
         }
 
+
+        [Authorize(Roles = "Admin,Member")]
         [HttpPost("DeliverBook/{memberId}/{bookCopyId}")]
         public async Task<IActionResult> DeliverBook(string memberId, int bookCopyId, int ratingValue)
         {
-
-            //Applicationuser ile yap burayı
+            // Üyenin var olup olmadığını kontrol et ve BorrowedBooks ve DeliveredBooks ile birlikte getir
             var member = await _context.Members.Include(m => m.BorrowedBooks).Include(m => m.DeliveredBooks).FirstOrDefaultAsync(m => m.Id == memberId);
 
-            if (member == null)
+            if (member == null || !member.IsActive)
             {
-                return NotFound("Member Not Found");
+                return NotFound("Member not found or inactive");
             }
 
+            // Kitap kopyasının var olup olmadığını kontrol et
             var bookCopy = await _context.BookCopies.FindAsync(bookCopyId);
 
             if (bookCopy == null)
             {
-                return NotFound("Book copy not avaliable");
+                return NotFound("Book copy not available");
             }
 
+            /*
+            // Kitap kopyasının zaten müsait olup olmadığını kontrol et
             if (bookCopy.IsAvailable)
             {
                 return BadRequest("Book copy is already available");
             }
+            */
 
-
+            // Üyenin bu kitap kopyasını ödünç alıp almadığını kontrol et
             if (!member.BorrowedBooks.Contains(bookCopy))
             {
-                return BadRequest("Book copy was not delivered by this member");
+                return BadRequest("Book copy was not borrowed by this member");
             }
 
+            // Kitap kopyası için rating'i kontrol et veya yeni bir rating oluştur
             var rating = await _context.Ratings.FirstOrDefaultAsync(r => r.BookCopy.Id == bookCopyId);
-
 
             if (rating == null)
             {
-                // If rating for this book copy doesn't exist, create a new one
+                // Eğer bu kitap kopyası için rating yoksa, yeni bir rating oluştur
                 rating = new Rating
                 {
-                    MemberId=memberId,
+                    MemberId = memberId,
                     RatingSum = ratingValue,
                     RatingAmount = 1,
                     BookCopy = bookCopy
@@ -280,32 +419,34 @@ namespace LibraryAPI.Controllers
             }
             else
             {
-                // Update existing rating
+                // Mevcut rating'i güncelle
                 rating.RatingSum += ratingValue;
                 rating.RatingAmount++;
-                // Update average rating
+                // Ortalama rating'i güncelle
                 rating.AverageRating = (double)rating.RatingSum / rating.RatingAmount;
                 _context.Ratings.Update(rating);
             }
 
-
-
-
+            // Üyenin borrowed ve delivered books listelerini güncelle
             member.DeliveredBooks.Add(bookCopy);
             member.BorrowedBooks.Remove(bookCopy);
+
+            // Kitap kopyasının durumunu güncelle
             bookCopy.IsAvailable = true;
             bookCopy.DeliveringMemberId = memberId;
+            bookCopy.DeliveredDate = DateTime.Now;
+            bookCopy.StockNumber++;  // Stok sayısını artır
 
             _context.Members.Update(member);
             _context.BookCopies.Update(bookCopy);
 
+            // Veri tabanı değişikliklerini kaydet
             await _context.SaveChangesAsync();
 
             return Ok("Book delivered successfully");
-           
-
-
         }
+
+
 
         [HttpGet("BorrowedBookList/{memberId}")]
         public async Task<IActionResult> BorrowedBookList(string memberId)
@@ -316,9 +457,9 @@ namespace LibraryAPI.Controllers
                 .ThenInclude(b => b.Book)  //// Kitap bilgilerini de yükleyin
                 .FirstOrDefaultAsync(m => m.Id == memberId);
 
-            if (member == null)
+            if (member == null )
             {
-                return NotFound("Member not found");
+                return NotFound("Member not found ");
             }
 
             var borrowedBooks = member.BorrowedBooks.Select(b => new
@@ -332,6 +473,52 @@ namespace LibraryAPI.Controllers
             return Ok(borrowedBooks);
         }
 
+        [Authorize(Roles = "Admin,Employee")]
+        [HttpGet("QRCodeGenerator/{memberId}")]
+        public async Task<IActionResult> Generate(string memberId)
+        {
+            // Member verisini veritabanından al
+            var member = await _context.Members
+                .Include(e => e.ApplicationUser) // ApplicationUser ilişkisini dahil edin
+                .FirstOrDefaultAsync(m => m.Id == memberId);
+
+            if (member == null)
+            {
+                return NotFound("Member not found.");
+            }
+
+            // QR kodu içeriğini oluşturun
+            var qrCodeContent = $"Üye ID: {member.Id}\n" +
+                                $"Üye Adı: {member.ApplicationUser?.Name}\n" +
+                                $"Adres: {member.ApplicationUser?.Address}\n" +
+                                $"Üye Telefon: {member.ApplicationUser?.PhoneNumber}\n" +
+                                $"Aktif: {member.IsActive}\n";
+
+            byte[] qrCodeBytes;
+
+            // QR kodunu oluştur
+            using (var qrGenerator = new QRCodeGenerator())
+            {
+                var qrCodeData = qrGenerator.CreateQrCode(qrCodeContent, QRCodeGenerator.ECCLevel.Q);
+                var qrCode = new BitmapByteQRCode(qrCodeData);
+
+                // QR kodunu byte[] olarak al
+                var qrCodeImage = qrCode.GetGraphic(5);
+
+                // byte[]'i SKBitmap'e dönüştür
+                using (var skBitmap = SKBitmap.Decode(qrCodeImage))
+                {
+                    using (var stream = new MemoryStream())
+                    {
+                        skBitmap.Encode(stream, SKEncodedImageFormat.Png, 100);
+                        qrCodeBytes = stream.ToArray();
+                    }
+                }
+            }
+
+            // QR kodunu PNG olarak döndür
+            return File(qrCodeBytes, "image/png");
+        }
 
 
 

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -22,6 +23,7 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/BookDonors
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BookDonor>>> GetBookDonor()
         {
@@ -33,6 +35,7 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/BookDonors/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpGet("{id}")]
         public async Task<ActionResult<BookDonor>> GetBookDonor(int id)
         {
@@ -52,6 +55,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/BookDonors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutBookDonor(int id, BookDonor bookDonor)
         {
@@ -83,6 +87,7 @@ namespace LibraryAPI.Controllers
 
         // POST: api/BookDonors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<BookDonor>> PostBookDonor(BookDonor bookDonor)
         {
@@ -111,6 +116,7 @@ namespace LibraryAPI.Controllers
         }
 
         // DELETE: api/BookDonors/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBookDonor(int id)
         {

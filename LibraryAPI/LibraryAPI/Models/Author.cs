@@ -20,6 +20,7 @@ namespace LibraryAPI.Models
         [Range(-400,2100)]
         public short? DeathDate { get; set; }  //DeadTime Null olabilir
 
+
         [StringLength(500)]
         public string? CoverImageUrl { get; set; } // Resim URL'si veya yolu
 

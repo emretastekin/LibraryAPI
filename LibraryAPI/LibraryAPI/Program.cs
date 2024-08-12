@@ -120,13 +120,18 @@ namespace LibraryAPI
                 _roleManager.CreateAsync(identityRole).Wait();
             }
 
+            
+
             if (_userManager.FindByNameAsync("Admin").Result == null)
             {
                 applicationUser = new ApplicationUser();
                 applicationUser.UserName = "Admin";
+                applicationUser.IsActive = true;
                 _userManager.CreateAsync(applicationUser, "Admin123!").Wait();
                 _userManager.AddToRoleAsync(applicationUser, "Admin").Wait();
             }
+
+            
 
             if (_context.Languages!.Find("tur") == null)
             {

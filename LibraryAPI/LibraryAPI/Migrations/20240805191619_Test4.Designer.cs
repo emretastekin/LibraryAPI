@@ -4,6 +4,7 @@ using LibraryAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LibraryAPI.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20240805191619_Test4")]
+    partial class Test4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("DonorsId");
 
-                    b.ToTable("BookDonor", (string)null);
+                    b.ToTable("BookDonor");
                 });
 
             modelBuilder.Entity("BookLanguage", b =>
@@ -49,7 +51,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("LanguagesCode");
 
-                    b.ToTable("BookLanguage", (string)null);
+                    b.ToTable("BookLanguage");
                 });
 
             modelBuilder.Entity("BookSubCategory", b =>
@@ -64,7 +66,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("SubCategoriesId");
 
-                    b.ToTable("BookSubCategory", (string)null);
+                    b.ToTable("BookSubCategory");
                 });
 
             modelBuilder.Entity("BookTranslator", b =>
@@ -79,7 +81,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("TranslatorsId");
 
-                    b.ToTable("BookTranslator", (string)null);
+                    b.ToTable("BookTranslator");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.ApplicationUser", b =>
@@ -116,9 +118,6 @@ namespace LibraryAPI.Migrations
 
                     b.Property<long>("IdNumber")
                         .HasColumnType("bigint");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -222,7 +221,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("AuthorId");
 
-                    b.ToTable("Authors", (string)null);
+                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.AuthorBook", b =>
@@ -327,7 +326,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("PublisherId");
 
-                    b.ToTable("Books", (string)null);
+                    b.ToTable("Books");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.BookCopy", b =>
@@ -497,7 +496,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories", (string)null);
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Donor", b =>
@@ -539,7 +538,7 @@ namespace LibraryAPI.Migrations
                         .IsUnique()
                         .HasFilter("[Phone] IS NOT NULL");
 
-                    b.ToTable("Donors", (string)null);
+                    b.ToTable("Donors");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Employee", b =>
@@ -555,9 +554,6 @@ namespace LibraryAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
-
                     b.Property<float>("Salary")
                         .HasColumnType("real");
 
@@ -570,7 +566,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Employees", (string)null);
+                    b.ToTable("Employees");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.FavoriteBook", b =>
@@ -620,7 +616,7 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("Languages", (string)null);
+                    b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Location", b =>
@@ -634,7 +630,7 @@ namespace LibraryAPI.Migrations
                     b.HasIndex("Shelf")
                         .IsUnique();
 
-                    b.ToTable("Locations", (string)null);
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Member", b =>
@@ -657,7 +653,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Members", (string)null);
+                    b.ToTable("Members");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Penalty", b =>
@@ -686,7 +682,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("Penalties", (string)null);
+                    b.ToTable("Penalties");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Publisher", b =>
@@ -729,7 +725,7 @@ namespace LibraryAPI.Migrations
                         .IsUnique()
                         .HasFilter("[Phone] IS NOT NULL");
 
-                    b.ToTable("Publishers", (string)null);
+                    b.ToTable("Publishers");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Rating", b =>
@@ -774,7 +770,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("MemberId");
 
-                    b.ToTable("Ratings", (string)null);
+                    b.ToTable("Ratings");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.SubCategory", b =>
@@ -797,7 +793,7 @@ namespace LibraryAPI.Migrations
 
                     b.HasIndex("CategoryID");
 
-                    b.ToTable("SubCategories", (string)null);
+                    b.ToTable("SubCategories");
                 });
 
             modelBuilder.Entity("LibraryAPI.Models.Translator", b =>
@@ -838,7 +834,7 @@ namespace LibraryAPI.Migrations
                         .IsUnique()
                         .HasFilter("[Phone] IS NOT NULL");
 
-                    b.ToTable("Translator", (string)null);
+                    b.ToTable("Translator");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

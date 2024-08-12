@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using LibraryAPI.Data;
 using LibraryAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace LibraryAPI.Controllers
 {
@@ -50,10 +51,11 @@ namespace LibraryAPI.Controllers
             return location;
         }
 
-        
+
 
         // POST: api/Locations
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<Location>> PostLocation(Location location)
         {
@@ -81,7 +83,39 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetLocation", new { id = location.Shelf }, location);
         }
 
+        // PUT: api/Locations/5
+        [Authorize(Roles = "Admin,Employee")]
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutLocation(string id, Location location)
+        {
+            if (id != location.Shelf)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(location).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LocationExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
         // DELETE: api/Locations/5
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLocation(string id)
         {

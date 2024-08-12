@@ -30,7 +30,6 @@ namespace LibraryAPI.Controllers
         }
 
         // GET: api/Authors
-        [Authorize(Roles ="Member,Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Author>>> GetAuthors()
         {
@@ -62,6 +61,7 @@ namespace LibraryAPI.Controllers
 
         // PUT: api/Authors/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutAuthor(long id, Author author)
         {
@@ -94,6 +94,7 @@ namespace LibraryAPI.Controllers
         // POST: api/Authors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[Authorize(Roles ="Worker,Employee")]
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost]
         public async Task<ActionResult<Author>> PostAuthor(Author author)
         {
@@ -113,6 +114,7 @@ namespace LibraryAPI.Controllers
             return CreatedAtAction("GetAuthor", new { id = author.AuthorId }, author);
         }
 
+        [Authorize(Roles = "Admin,Employee")]
         [HttpPost("upload-cover-image/{authorId}")]
         public async Task<IActionResult> UploadCoverImage(long authorId, IFormFile coverImage)
         {
@@ -121,7 +123,7 @@ namespace LibraryAPI.Controllers
                 return BadRequest("No file uploaded.");
             }
 
-            // Kitabı bul
+            // Kişiyi bul
             var author = await _context.Authors.FindAsync(authorId);
             if (author == null)
             {
@@ -129,8 +131,16 @@ namespace LibraryAPI.Controllers
             }
 
             // Dosya yolunu belirleyin (örneğin: wwwroot/images/{fileName})
+            var uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images");
+
+            // Klasörün var olup olmadığını kontrol edin ve gerekiyorsa oluşturun
+            if (!Directory.Exists(uploadsFolder))
+            {
+                Directory.CreateDirectory(uploadsFolder);
+            }
+
             var fileName = coverImage.FileName;
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+            var filePath = Path.Combine(uploadsFolder, fileName);
 
             // Dosyayı kaydedin
             using (var stream = new FileStream(filePath, FileMode.Create))
@@ -138,21 +148,50 @@ namespace LibraryAPI.Controllers
                 await coverImage.CopyToAsync(stream);
             }
 
-            // Kitap nesnesinin CoverImageUrl özelliğini güncelleyin
+            // Kişinin CoverImageUrl özelliğini güncelleyin
             author.CoverImageUrl = $"/images/{fileName}";
 
-            // Kitap nesnesini güncelleyin
+            // Kişi nesnesini güncelleyin
             _context.Entry(author).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             // Dosyayı okuyup yanıt olarak döndürün
             var fileBytes = await System.IO.File.ReadAllBytesAsync(filePath);
             return File(fileBytes, "image/jpeg");
+        }
 
+        [Authorize(Roles = "Admin,Employee")]
+        [HttpDelete("remove-cover-image/{authorId}")]
+        public async Task<IActionResult> RemoveCoverImage(long authorId)
+        {
+            var author = await _context.Authors.FindAsync(authorId);
+            if (author == null)
+            {
+                return NotFound("Author not found.");
+            }
+
+            // Eski kapak resminin dosya yolunu belirleyin
+            var oldFileName = Path.GetFileName(author.CoverImageUrl);
+            var oldFilePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", oldFileName);
+
+            // Dosya varsa, dosyayı kaldırın
+            if (System.IO.File.Exists(oldFilePath))
+            {
+                System.IO.File.Delete(oldFilePath);
+            }
+
+            // Kapak resmini kaldırın
+            author.CoverImageUrl = null;
+
+            // Üye nesnesini güncelleyin
+            _context.Entry(author).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
 
         // DELETE: api/Authors/5
-        [Authorize(Roles="Worker,Employee")]
+        [Authorize(Roles = "Admin,Employee")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAuthor(long id)
         {
